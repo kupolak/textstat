@@ -68,5 +68,10 @@ describe TextStat do
       expect(count).to eql 372
       expect(count_punctuation).to eql 376
     end
+
+    it 'should return the correct number of syllables' do
+      count = TextStat.syllable_count(@long_test)
+      expect(count).to eql 559
+    end
   end
 end
