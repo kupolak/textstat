@@ -60,5 +60,13 @@ describe TextStat do
       expect(count).to eql 1750
       expect(count_spaces).to eql 2123
     end
+
+    it 'should return the correct number of lexicons' do
+      count = TextStat.lexicon_count(@long_test)
+      count_punctuation = TextStat.lexicon_count(@long_test, false)
+
+      expect(count).to eql 372
+      expect(count_punctuation).to eql 376
+    end
   end
 end
