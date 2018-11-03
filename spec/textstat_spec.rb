@@ -78,5 +78,10 @@ describe TextStat do
       count = TextStat.sentence_count(@long_test)
       expect(count).to eql 16
     end
+
+    it 'should return the correct average sentence length' do
+      avg = TextStat.avg_sentence_length(@long_test)
+      expect(avg).to eql 23.3
+    end
   end
 end
