@@ -83,5 +83,10 @@ describe TextStat do
       avg = TextStat.avg_sentence_length(@long_test)
       expect(avg).to eql 23.3
     end
+
+    it 'should return the correct average syllables per word' do
+      avg = TextStat.avg_syllables_per_word(@long_test)
+      expect(avg).to eql 1.5
+    end
   end
 end
