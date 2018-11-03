@@ -29,4 +29,11 @@ class TextStat
   def self.sentence_count(text)
     text.scan(/[\.\?!][\'\\)\]]*[ |\n][A-Z]/).map(&:strip).count + 1
   end
+
+  def self.avg_sentence_length(text)
+    asl = lexicon_count(text).to_f / sentence_count(text).to_f
+    asl.round(1)
+  rescue ZeroDivisionError
+    0.0
+  end
 end
