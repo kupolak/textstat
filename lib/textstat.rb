@@ -36,4 +36,15 @@ class TextStat
   rescue ZeroDivisionError
     0.0
   end
+
+  def self.avg_syllables_per_word(text)
+    syllable = syllable_count(text)
+    words    = lexicon_count(text)
+    begin
+      syllables_per_word = syllable.to_f / words.to_f
+      return syllables_per_word.round(1)
+    rescue ZeroDivisionError
+      return 0.0
+    end
+  end
 end
