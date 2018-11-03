@@ -73,5 +73,10 @@ describe TextStat do
       count = TextStat.syllable_count(@long_test)
       expect(count).to eql 559
     end
+
+    it 'should return the correct number of sentences' do
+      count = TextStat.sentence_count(@long_test)
+      expect(count).to eql 16
+    end
   end
 end
