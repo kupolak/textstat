@@ -25,4 +25,8 @@ class TextStat
     end
     count
   end
+
+  def self.sentence_count(text)
+    text.scan(/[\.\?!][\'\\)\]]*[ |\n][A-Z]/).map(&:strip).count + 1
+  end
 end
