@@ -47,4 +47,11 @@ class TextStat
       return 0.0
     end
   end
+
+  def self.avg_letter_per_word(text)
+    letters_per_word = char_count(text).to_f / lexicon_count(text).to_f
+    letters_per_word.round(2)
+  rescue ZeroDivisionError
+    0.0
+  end
 end
