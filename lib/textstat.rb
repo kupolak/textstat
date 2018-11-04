@@ -54,4 +54,11 @@ class TextStat
   rescue ZeroDivisionError
     0.0
   end
+
+  def self.avg_sentence_per_word(text)
+    sentence_per_word = sentence_count(text).to_f / lexicon_count(text).to_f
+    sentence_per_word.round(2)
+  rescue ZeroDivisionError
+    0.0
+  end
 end
