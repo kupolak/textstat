@@ -93,5 +93,10 @@ describe TextStat do
       avg = TextStat.avg_letter_per_word(@long_test)
       expect(avg).to eql 4.7
     end
+
+    it 'should return the correct average sentence per word' do
+      avg = TextStat.avg_sentence_per_word(@long_test)
+      expect(avg).to eql 0.04
+    end
   end
 end
