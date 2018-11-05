@@ -61,4 +61,13 @@ class TextStat
   rescue ZeroDivisionError
     0.0
   end
+
+  def self.flesch_reading_ease(text)
+    sentence_length    = avg_sentence_length(text)
+    syllables_per_word = avg_syllables_per_word(text)
+    flesch = (
+    206.835 - (1.015 * sentence_length).to_f - (84.6 * syllables_per_word).to_f
+    )
+    flesch.round(2)
+  end
 end
