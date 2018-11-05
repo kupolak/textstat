@@ -70,4 +70,11 @@ class TextStat
     )
     flesch.round(2)
   end
+
+  def self.flesch_kincaid_grade(text)
+    sentence_length = avg_sentence_length(text)
+    syllables_per_word = avg_syllables_per_word(text)
+    flesch = (0.39 * sentence_length.to_f) + (11.8 * syllables_per_word.to_f) - 15.59
+    flesch.round(1)
+  end
 end
