@@ -103,5 +103,10 @@ describe TextStat do
       score = TextStat.flesch_reading_ease(@long_test)
       expect(score).to eql 56.29
     end
+
+    it 'should return the correct Flesch–Kincaid grade' do
+      score = TextStat.flesch_kincaid_grade(@long_test)
+      expect(score).to eql 11.2
+    end
   end
 end
