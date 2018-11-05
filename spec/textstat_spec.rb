@@ -98,5 +98,10 @@ describe TextStat do
       avg = TextStat.avg_sentence_per_word(@long_test)
       expect(avg).to eql 0.04
     end
+
+    it 'should return the correct Flesch reading-ease test score' do
+      score = TextStat.flesch_reading_ease(@long_test)
+      expect(score).to eql 56.29
+    end
   end
 end
