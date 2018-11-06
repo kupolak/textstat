@@ -77,4 +77,13 @@ class TextStat
     flesch = (0.39 * sentence_length.to_f) + (11.8 * syllables_per_word.to_f) - 15.59
     flesch.round(1)
   end
+
+  def self.polysyllab_count(text)
+    count = 0
+    text.split(' ').each do |word|
+      w = syllable_count(word)
+      count += 1 if w >= 3
+    end
+    count
+  end
 end
