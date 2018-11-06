@@ -86,4 +86,21 @@ class TextStat
     end
     count
   end
+
+  def self.smog_index(text)
+    sentences = sentence_count(text)
+
+    if sentences >= 3
+      begin
+        polysyllab = polysyllab_count(text)
+        smog = (
+        (1.043 * (30 * (polysyllab / sentences))**0.5) + 3.1291)
+        return smog.round(1)
+      rescue ZeroDivisionError
+        return 0.0
+      end
+    else
+      return 0.0
+    end
+  end
 end
