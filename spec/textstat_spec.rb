@@ -113,5 +113,10 @@ describe TextStat do
       count = TextStat.polysyllab_count(@long_test)
       expect(count).to eql 43
     end
+
+    it 'should return the correct smog index' do
+      index = TextStat.smog_index(@long_test)
+      expect(index).to eql 11.2
+    end
   end
 end
