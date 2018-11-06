@@ -108,5 +108,10 @@ describe TextStat do
       score = TextStat.flesch_kincaid_grade(@long_test)
       expect(score).to eql 11.2
     end
+
+    it 'should return the correct number of polysyllab' do
+      count = TextStat.polysyllab_count(@long_test)
+      expect(count).to eql 43
+    end
   end
 end
