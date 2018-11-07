@@ -118,5 +118,10 @@ describe TextStat do
       index = TextStat.smog_index(@long_test)
       expect(index).to eql 11.2
     end
+
+    it 'should return the correct Coleman–Liau index' do
+      index = TextStat.coleman_liau_index(@long_test)
+      expect(index).to eql 10.28
+    end
   end
 end
