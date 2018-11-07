@@ -103,4 +103,11 @@ class TextStat
       return 0.0
     end
   end
+
+  def self.coleman_liau_index(text)
+    letters   = (avg_letter_per_word(text) * 100).round(2)
+    sentences = (avg_sentence_per_word(text) * 100).round(2)
+    coleman   = ((0.058 * letters) - (0.296 * sentences) - 15.8).to_f
+    coleman.round(2)
+  end
 end
