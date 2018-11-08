@@ -110,4 +110,20 @@ class TextStat
     coleman   = ((0.058 * letters) - (0.296 * sentences) - 15.8).to_f
     coleman.round(2)
   end
+
+  def self.automated_readability_index(text)
+    chars     = char_count(text)
+    words     = lexicon_count(text)
+    sentences = sentence_count(text)
+    begin
+      a = chars.to_f / words.to_f
+      b = words.to_f / sentences.to_f
+
+      readability = (
+      (4.71 * a.round(2) + (0.5 * b.round(2))) - 21.43)
+      return readability.round(1)
+    rescue ZeroDivisionError
+      return 0.0
+    end
+  end
 end
