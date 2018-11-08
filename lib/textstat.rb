@@ -142,9 +142,7 @@ class TextStat
 
     text = text_list.join(' ')
 
-    p easy_word, difficult_word
-
-    p number = ((easy_word * 1 + difficult_word * 3) / sentence_count(text)).to_f
+    number = ((easy_word * 1 + difficult_word * 3) / sentence_count(text)).to_f
     if number <= 20
       number -= 2
     end
