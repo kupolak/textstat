@@ -126,4 +126,28 @@ class TextStat
       return 0.0
     end
   end
+
+  def self.linsear_write_formula(text)
+    easy_word = 0
+    difficult_word = 0
+    text_list = text.split(' ')[0..100]
+
+    text_list.each do |word|
+      if syllable_count(word) < 3
+        easy_word += 1
+      else
+        difficult_word += 1
+      end
+    end
+
+    text = text_list.join(' ')
+
+    p easy_word, difficult_word
+
+    p number = ((easy_word * 1 + difficult_word * 3) / sentence_count(text)).to_f
+    if number <= 20
+      number -= 2
+    end
+    return number / 2
+  end
 end
