@@ -123,5 +123,10 @@ describe TextStat do
       index = TextStat.coleman_liau_index(@long_test)
       expect(index).to eql 10.28
     end
+
+    it 'should return the correct automated readability index' do
+      index = TextStat.automated_readability_index(@long_test)
+      expect(index).to eql 12.3
+    end
   end
 end
