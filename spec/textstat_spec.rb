@@ -128,5 +128,10 @@ describe TextStat do
       index = TextStat.automated_readability_index(@long_test)
       expect(index).to eql 12.3
     end
+
+    it 'should return the correct linsear write formula result' do
+      result = TextStat.linsear_write_formula(@long_test)
+      expect(result).to eql 14.5
+    end
   end
 end
