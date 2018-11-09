@@ -148,4 +148,23 @@ class TextStat
     end
     return number / 2
   end
+
+  def self.difficult_words(text)
+    require 'set'
+    easy_words = Set.new
+    File.read('lib/easy_words.txt').each_line do |line|
+      easy_words << line.chop
+    end
+
+    text_list = text.downcase.gsub(/[^0-9a-z ]/i, '').split(' ')
+    diff_words_set = Set.new
+    text_list.each do |value|
+      unless easy_words.include? value
+        if syllable_count(value) > 1
+          diff_words_set.add(value)
+        end
+      end
+    end
+    return diff_words_set.length
+  end
 end
