@@ -188,4 +188,16 @@ class TextStat
     end
     return score.round(2)
   end
+
+  def self.gunning_fog(text)
+    begin
+      per_diff_words = (
+      (difficult_words(text) / lexicon_count(text) * 100) + 5)
+
+      grade = 0.4 * (avg_sentence_length(text) + per_diff_words)
+      return grade.round(2)
+    rescue ZeroDivisionError
+      return 0.0
+    end
+  end
 end
