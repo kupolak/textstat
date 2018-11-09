@@ -167,4 +167,25 @@ class TextStat
     end
     return diff_words_set.length
   end
+
+  def self.dale_chall_readability_score(text)
+    word_count = lexicon_count(text)
+    count = word_count - difficult_words(text)
+
+    begin
+      per = count.to_f / word_count.to_f * 100
+    rescue ZeroDivisionError
+      return 0.0
+    end
+
+    difficult_words = 100 - per
+    score = (
+    (0.1579 * difficult_words)
+    + (0.0496 * avg_sentence_length(text)))
+
+    if difficult_words > 5
+      score += 3.6365
+    end
+    return score.round(2)
+  end
 end
