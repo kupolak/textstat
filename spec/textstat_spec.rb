@@ -138,5 +138,10 @@ describe TextStat do
       result = TextStat.difficult_words(@long_test)
       expect(result).to eql 58
     end
+
+    it 'should return the correct Dale–Chall readability score' do
+      score = TextStat.dale_chall_readability_score(@long_test)
+      expect(score).to eql 4.79
+    end
   end
 end
