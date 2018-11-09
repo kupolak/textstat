@@ -143,5 +143,10 @@ describe TextStat do
       score = TextStat.dale_chall_readability_score(@long_test)
       expect(score).to eql 4.79
     end
+
+    it 'should return the correct Gunning fog score' do
+      score = TextStat.gunning_fog(@long_test)
+      expect(score).to eql 11.32
+    end
   end
 end
