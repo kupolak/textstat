@@ -133,5 +133,10 @@ describe TextStat do
       result = TextStat.linsear_write_formula(@long_test)
       expect(result).to eql 14.5
     end
+
+    it 'should return the correct difficult words result' do
+      result = TextStat.difficult_words(@long_test)
+      expect(result).to eql 58
+    end
   end
 end
