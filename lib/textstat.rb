@@ -200,4 +200,16 @@ class TextStat
       return 0.0
     end
   end
+
+  def self.lix(text)
+    words = text.split(' ')
+    words_length = words.length
+    long_words = words.select { |word| word.length > 6 }.count
+
+    per_long_words = (long_words * 100).to_f / words_length
+    asl = avg_sentence_length(text)
+    lix = asl + per_long_words
+
+    return lix.round(2)
+  end
 end
