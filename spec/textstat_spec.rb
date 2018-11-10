@@ -148,5 +148,10 @@ describe TextStat do
       score = TextStat.gunning_fog(@long_test)
       expect(score).to eql 11.32
     end
+
+    it 'should return the correct Lix readability test score' do
+      score = TextStat.lix(@long_test)
+      expect(score).to eql 45.11
+    end
   end
 end
