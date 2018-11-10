@@ -212,4 +212,82 @@ class TextStat
 
     return lix.round(2)
   end
+
+  def self.text_standard(text, float_output=nil)
+    grade = []
+
+    lower = flesch_kincaid_grade(text).round
+    upper = flesch_kincaid_grade(text).ceil
+    grade.append(lower.to_i)
+    grade.append(upper.to_i)
+
+    # Appending Flesch Reading Easy
+    score = flesch_reading_ease(text)
+    if score < 100 && score >= 90
+      grade.append(5)
+    elsif score < 90 && score >= 80
+      grade.append(6)
+    elsif score < 80 && score >= 70
+      grade.append(7)
+    elsif score < 70 && score >= 60
+      grade.append(8)
+      grade.append(9)
+    elsif score < 60 && score >= 50
+      grade.append(10)
+    elsif score < 50 && score >= 40
+      grade.append(11)
+    elsif score < 40 && score >= 30
+      grade.append(12)
+    else
+      grade.append(13)
+    end
+
+    # Appending SMOG Index
+    lower = smog_index(text).round
+    upper = smog_index(text).ceil
+    grade.append(lower.to_i)
+    grade.append(upper.to_i)
+
+    # Appending Coleman_Liau_Index
+    lower = coleman_liau_index(text).round
+    upper = coleman_liau_index(text).ceil
+    grade.append(lower.to_i)
+    grade.append(upper.to_i)
+
+    # Appending Automated_Readability_Index
+    lower = automated_readability_index(text).round
+    upper = automated_readability_index(text).ceil
+    grade.append(lower.to_i)
+    grade.append(upper.to_i)
+
+    # Appending Dale_Chall_Readability_Score
+    lower = dale_chall_readability_score(text).round
+    upper = dale_chall_readability_score(text).ceil
+    grade.append(lower.to_i)
+    grade.append(upper.to_i)
+
+    # Appending Linsear_Write_Formula
+    lower = linsear_write_formula(text).round
+    upper = linsear_write_formula(text).ceil
+    grade.append(lower.to_i)
+    grade.append(upper.to_i)
+
+    # Appending Gunning Fog Index
+    lower = gunning_fog(text).round
+    upper = gunning_fog(text).ceil
+    grade.append(lower.to_i)
+    grade.append(upper.to_i)
+
+    # Finding the Readability Consensus based upon all the above tests
+    require 'counter'
+    d = Counter.new(grade)
+    final_grade = d.most_common(1)
+    score = final_grade[0][0]
+
+    if float_output
+      return score.to_f
+    else
+      return "#{score.to_i - 1}th and #{score.to_i}th grade"
+    end
+  end
 end
