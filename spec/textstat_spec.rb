@@ -153,5 +153,10 @@ describe TextStat do
       score = TextStat.lix(@long_test)
       expect(score).to eql 45.11
     end
+
+    it 'should return the readability consensus score' do
+      standard = TextStat.text_standard(@long_test)
+      expect(standard).to eql '10th and 11th grade'
+    end
   end
 end
