@@ -35,3 +35,18 @@ TextStat.text_standard(test_data)
 
 The argument (text) for all the defined functions remains the same -
 i.e the text for which statistics need to be calculated.
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'textstat'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install textstat
