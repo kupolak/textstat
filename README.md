@@ -263,3 +263,27 @@ Optional `float_output` allows the score to be returned as a
 - [ ] Portuguese
 - [ ] Russian
 - [ ] Swedish
+
+## Contributing
+
+If you find any problems, you should open an
+[issue](https://github.com/kupolak/textstat/issues).
+
+If you can fix an issue you've found, or another issue, you should open
+a [pull request](https://github.com/kupolak/textstat/pulls).
+
+1. Fork this repository on GitHub to start making your changes to the master
+branch (or branch off of it).
+2. Write a test which shows that the bug was fixed or that the feature works as expected.
+3. Send a pull request!
+
+### Development setup
+
+```bash
+git clone https://github.com/kupolak/textstat.git  # Clone the repo from your fork
+cd textstat
+bundle  # Install all dependencies
+
+# Make changes
+rspec spec  # Run tests
+```
