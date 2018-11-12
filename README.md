@@ -233,11 +233,12 @@ grade level required to understand the text.
 Optional `float_output` allows the score to be returned as a
 `float`. Defaults to `False`.
 
+
 ## TODO
 
 - [ ] LRU Cache support
 
-###Easy words (~2000):
+Easy words (~2000):
 - [ ] Catalan
 - [ ] Czech
 - [ ] Danish
