@@ -237,7 +237,7 @@ Optional `float_output` allows the score to be returned as a
 
 - [ ] LRU Cache support
 
-####Easy words (~2000):
+###Easy words (~2000):
 - [ ] Catalan
 - [ ] Czech
 - [ ] Danish
