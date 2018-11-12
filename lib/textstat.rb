@@ -149,10 +149,10 @@ class TextStat
     return number / 2
   end
 
-  def self.difficult_words(text)
+  def self.difficult_words(text, language = 'en_us')
     require 'set'
     easy_words = Set.new
-    File.read('lib/easy_words.txt').each_line do |line|
+    File.read("lib/dictionaries/#{language}.txt").each_line do |line|
       easy_words << line.chop
     end
 
