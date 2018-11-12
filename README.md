@@ -45,11 +45,11 @@ gem 'textstat'
 
 And then execute:
 
-    $ bundle
+     bundle
 
 Or install it yourself as:
 
-    $ gem install textstat
+     gem install textstat
 ## List of Functions
 
 ### Syllable Count
