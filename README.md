@@ -257,7 +257,7 @@ Easy words (~2000):
 - [ ] Italian
 - [ ] Latin
 - [ ] Mongolian
-- [ ] Dutch (Nederlande)
+- [x] Dutch (Nederlande)
 - [ ] Nynorsk (Norwegian)
 - [ ] Bokmål (Norwegian)
 - [ ] Polish
