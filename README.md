@@ -240,7 +240,7 @@ Optional `float_output` allows the score to be returned as a
 
 Easy words (~2000):
 - [x] Catalan
-- [ ] Czech
+- [x] Czech
 - [ ] Danish
 - [ ] US English and UK English independently
 - [ ] Spanish
