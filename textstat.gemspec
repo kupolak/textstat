@@ -32,8 +32,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  spec.files         = Dir['lib/**/*.rb', 'lib/easy_words.txt']
-  spec.test_files    = ["spec/textstat_spec.rb", "lib/easy_words.txt"]
+  spec.files         = Dir['lib/**/*.rb', 'lib/dictionaries/ca.txt', 'lib/dictionaries/cs.txt', 'lib/dictionaries/en_us.txt', 'lib/dictionaries/nl.txt']
+  spec.test_files    = ["spec/textstat_spec.rb", "lib/dictionaries/en_us.txt"]
 
   spec.add_runtime_dependency     "text-hyphen", "~> 1.4", ">= 1.4.1"
   spec.add_development_dependency "bundler", "~> 2.0.a"
