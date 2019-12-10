@@ -1,6 +1,8 @@
 require 'text-hyphen'
 
 class TextStat
+  GEM_PATH = File.dirname(File.dirname(__FILE__))
+
   def self.char_count(text, ignore_spaces = true)
     text = text.delete(' ') if ignore_spaces
     text.length
@@ -152,7 +154,7 @@ class TextStat
   def self.difficult_words(text, language = 'en_us')
     require 'set'
     easy_words = Set.new
-    File.read("lib/dictionaries/#{language}.txt").each_line do |line|
+    File.read(File.join(dictionary_path, "#{language}.txt")).each_line do |line|
       easy_words << line.chop
     end
 
@@ -289,5 +291,13 @@ class TextStat
     else
       return "#{score.to_i - 1}th and #{score.to_i}th grade"
     end
+  end
+
+  def self.dictionary_path=(path)
+    @dictionary_path = path
+  end
+
+  def self.dictionary_path
+    @dictionary_path ||= File.join(TextStat::GEM_PATH, 'lib', 'dictionaries')
   end
 end
