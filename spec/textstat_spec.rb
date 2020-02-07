@@ -158,5 +158,20 @@ describe TextStat do
       standard = TextStat.text_standard(@long_test)
       expect(standard).to eql '10th and 11th grade'
     end
+
+    describe '.dictionary_path' do
+      subject(:dictionary_path) { described_class.dictionary_path }
+
+      it 'returns the Gem dictionary path by default' do
+        gem_root = File.dirname(File.dirname(__FILE__))
+        default_path = File.join(gem_root, 'lib', 'dictionaries')
+        expect(dictionary_path).to eq default_path
+      end
+
+      it 'allows dictionary path to be overridden' do
+        described_class.dictionary_path = '/some/other/path'
+        expect(dictionary_path).to eq '/some/other/path'
+      end
+    end
   end
 end
