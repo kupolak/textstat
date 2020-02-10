@@ -241,7 +241,7 @@ Optional `float_output` allows the score to be returned as a
 Easy words (~2000):
 - [x] Catalan
 - [x] Czech
-- [ ] Danish
+- [x] Danish
 - [ ] US English and UK English independently
 - [ ] Spanish
 - [ ] Estonian
@@ -260,10 +260,10 @@ Easy words (~2000):
 - [x] Dutch (Nederlande)
 - [ ] Nynorsk (Norwegian)
 - [ ] Bokmål (Norwegian)
-- [ ] Polish
-- [ ] Portuguese
-- [ ] Russian
-- [ ] Swedish
+- [x] Polish
+- [x] Portuguese
+- [x] Russian
+- [x] Swedish
 
 ## Contributing
 

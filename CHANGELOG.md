@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.1.3 2020-02-10
+### Added 
+- Polish dictionary
+- Danish dictionary
+- German dictionary
+
 ## 0.1.2 2020-02-07
 ### Added 
 - Fixed: Update dictionary lookup to use gem path by default #29
