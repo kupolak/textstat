@@ -243,18 +243,18 @@ Easy words (~2000):
 - [x] Czech
 - [x] Danish
 - [ ] US English and UK English independently
-- [ ] Spanish
+- [x] Spanish
 - [ ] Estonian
-- [ ] Finnish
-- [ ] French
+- [x] Finnish
+- [x] French
 - [ ] Irish Gaelic
 - [ ] Croatian
 - [ ] Upper Sorbian
-- [ ] Hungarian
+- [x] Hungarian
 - [ ] Interlingua
-- [ ] Indonesian
+- [x] Indonesian
 - [ ] Icelandic
-- [ ] Italian
+- [x] Italian
 - [ ] Latin
 - [ ] Mongolian
 - [x] Dutch (Nederlande)

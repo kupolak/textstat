@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.1.4 2020-02-11
+### Added 
+- French dictionary
+- Finnish dictionary
+- Spanish dictionary
+- Hungarian dictionary
+- Italian dictionary
+- Indonesian dictionary
+
 ## 0.1.3 2020-02-10
 ### Added 
 - Polish dictionary
