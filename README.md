@@ -233,37 +233,40 @@ grade level required to understand the text.
 Optional `float_output` allows the score to be returned as a
 `float`. Defaults to `False`.
 
+Languages supported:
+- US English
+- Catalan
+- Czech
+- Danish
+- Spanish
+- Estonian
+- Finnish
+- French
+- Hungarian
+- Indonesian
+- Icelandic
+- Italian
+- Latin
+- Dutch (Nederlande)
+- Bokmål (Norwegian)
+- Polish
+- Portuguese
+- Russian
+- Swedish
 
 ## TODO
 
-- [ ] LRU Cache support
+- [ ] Performance optimization
+- [ ] CEFR levels
 
-Easy words (~2000):
-- [x] Catalan
-- [x] Czech
-- [x] Danish
-- [ ] US English and UK English independently
-- [x] Spanish
-- [x] Estonian
-- [x] Finnish
-- [x] French
+Dictionary (2000 words):
+- [ ] UK English
 - [ ] Irish Gaelic
 - [ ] Croatian
 - [ ] Upper Sorbian
-- [x] Hungarian
 - [ ] Interlingua
-- [x] Indonesian
-- [x] Icelandic
-- [x] Italian
-- [x] Latin
 - [ ] Mongolian
-- [x] Dutch (Nederlande)
 - [ ] Nynorsk (Norwegian)
-- [x] Bokmål (Norwegian)
-- [x] Polish
-- [x] Portuguese
-- [x] Russian
-- [x] Swedish
 
 ## Contributing
 
