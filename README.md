@@ -244,7 +244,7 @@ Easy words (~2000):
 - [x] Danish
 - [ ] US English and UK English independently
 - [x] Spanish
-- [ ] Estonian
+- [x] Estonian
 - [x] Finnish
 - [x] French
 - [ ] Irish Gaelic
@@ -253,13 +253,13 @@ Easy words (~2000):
 - [x] Hungarian
 - [ ] Interlingua
 - [x] Indonesian
-- [ ] Icelandic
+- [x] Icelandic
 - [x] Italian
-- [ ] Latin
+- [x] Latin
 - [ ] Mongolian
 - [x] Dutch (Nederlande)
 - [ ] Nynorsk (Norwegian)
-- [ ] Bokmål (Norwegian)
+- [x] Bokmål (Norwegian)
 - [x] Polish
 - [x] Portuguese
 - [x] Russian

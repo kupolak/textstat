@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## 0.1.5 2020-02-12
+### Added 
+- Icelandic dictionary
+- Estonian dictionary
+- Latin dictionary
+- Norwegian (bokmål) dictionary
+
 ## 0.1.4 2020-02-11
 ### Added 
 - French dictionary

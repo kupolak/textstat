@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    textstat (0.1.4)
+    textstat (0.1.5)
       text-hyphen (~> 1.4, >= 1.4.1)
 
 GEM
