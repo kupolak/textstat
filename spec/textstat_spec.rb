@@ -116,22 +116,22 @@ describe TextStat do
 
     it 'should return the correct smog index' do
       index = TextStat.smog_index(@long_test)
-      expect(index).to eql 11.2
+      expect(index).to eql 12.5
     end
 
     it 'should return the correct Coleman–Liau index' do
       index = TextStat.coleman_liau_index(@long_test)
-      expect(index).to eql 10.28
+      expect(index).to eql 10.65
     end
 
     it 'should return the correct automated readability index' do
       index = TextStat.automated_readability_index(@long_test)
-      expect(index).to eql 12.3
+      expect(index).to eql 12.4
     end
 
     it 'should return the correct linsear write formula result' do
       result = TextStat.linsear_write_formula(@long_test)
-      expect(result).to eql 14.5
+      expect(result).to eql 14.875
     end
 
     it 'should return the correct difficult words result' do
@@ -141,12 +141,12 @@ describe TextStat do
 
     it 'should return the correct Dale–Chall readability score' do
       score = TextStat.dale_chall_readability_score(@long_test)
-      expect(score).to eql 4.79
+      expect(score).to eql 7.25
     end
 
     it 'should return the correct Gunning fog score' do
       score = TextStat.gunning_fog(@long_test)
-      expect(score).to eql 11.32
+      expect(score).to eql 17.56
     end
 
     it 'should return the correct Lix readability test score' do
