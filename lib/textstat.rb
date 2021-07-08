@@ -209,6 +209,11 @@ class TextStat
     forcast
   end
 
+  def self.powers_sumner_kearl(text)
+    grade = 0.0778 * avg_sentence_length(text) + 0.0455 * syllable_count(text) - 2.2029
+    grade.round(2)
+  end
+
   def self.text_standard(text, float_output=nil)
     grade = []
 

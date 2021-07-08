@@ -159,6 +159,11 @@ describe TextStat do
       expect(score).to eql 10
     end
 
+    it 'should return the correct Powers Sumner Kearl readability test score' do
+      score = TextStat.powers_sumner_kearl(@long_test)
+      expect(score).to eql 25.04
+    end
+
     it 'should return the readability consensus score' do
       standard = TextStat.text_standard(@long_test)
       expect(standard).to eql '10th and 11th grade'
