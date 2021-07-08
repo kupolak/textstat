@@ -1,5 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+## 0.1.7 2021-07-08
+### Added
+Formulas:
+- FORCAST
+- Powers Sumner Kearl
+- SPACHE
+
+New dictionaries:
+- Croatian
+
 ## 0.1.6 2020-02-12
 Update README.md
 
