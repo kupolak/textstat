@@ -1,8 +1,6 @@
 # Texstat 
 Ruby gem to calculate statistics from text to determine readability, complexity and grade level of a particular corpus.
 
-Translation based on Python textstat library by @shivam5992 and other contributors. Thanks for making this world more open sourced :heart:
-
 ## Usage
 
 ```ruby
@@ -21,15 +19,30 @@ test_data = %(
 )
 
 
-TextStat.flesch_reading_ease(test_data)
-TextStat.smog_index(test_data)
-TextStat.flesch_kincaid_grade(test_data)
-TextStat.coleman_liau_index(test_data)
-TextStat.automated_readability_index(test_data)
-TextStat.dale_chall_readability_score(test_data)
+TextStat.char_count(test_data)
+TextStat.lexicon_count(test_data)
+TextStat.syllable_count(test_data)
+TextStat.sentence_count(test_data)
+TextStat.avg_sentence_length(test_data)
+TextStat.avg_syllables_per_word(test_data)
+TextStat.avg_letter_per_word(test_data)
+TextStat.avg_sentence_per_word(test_data)
 TextStat.difficult_words(test_data)
-TextStat.linsear_write_formula(test_data)
+
+
+TextStat.flesch_reading_ease(test_data)
+TextStat.flesch_kincaid_grade(test_data)
 TextStat.gunning_fog(test_data)
+TextStat.smog_index(test_data)
+TextStat.automated_readability_index(test_data)
+TextStat.coleman_liau_index(test_data)
+TextStat.linsear_write_formula(test_data)
+TextStat.dale_chall_readability_score(test_data)
+TextStat.lix(test_data)
+TextStat.forcast(test_data)
+TextStat.powers_sumner_kearl(test_data)
+TextStat.spache(test_data)
+
 TextStat.text_standard(test_data)
 ```
 
@@ -52,6 +65,28 @@ Or install it yourself as:
      gem install textstat
 ## List of Functions
 
+### Char Count
+
+```ruby
+TextStat.char_count(text, ignore_spaces = true)
+```
+
+Calculates the number of characters present in the text.
+Optional `ignore_spaces` specifies whether we need to take spaces into account while counting chars.
+Default value is `true`.
+
+### Lexicon Count
+
+```ruby
+TextStat.lexicon_count(text, remove_punctuation = true)
+```
+
+Calculates the number of words present in the text.
+Optional `remove_punctuation` specifies whether we need to take
+punctuation symbols into account while counting lexicons.
+Default value is `true`, which removes the punctuation
+before counting lexicon items.
+
 ### Syllable Count
 
 ```ruby
@@ -61,23 +96,9 @@ TextStat.syllable_count(text, lang='en_us')
 Returns the number of syllables present in the given text.
 
 Uses the Ruby gem [text-hyphen](https://github.com/halostatue/text-hyphen)
-for syllable calculation. Optional `language` specifies to
-text-hyphen which language dictionary to use.
+for syllable calculation. Optional `language` specifies which language dictionary to use.
 
-Default is `'en_us'`, other languages should have their own dictionaries for easy words (TODO).
-
-
-### Lexicon Count
-
-```ruby
-TextStat.lexicon_count(text, remove_punctuation = true)
-```
-
-Calculates the number of words present in the text.
-Optional `removepunct` specifies whether we need to take
-punctuation symbols into account while counting lexicons.
-Default value is `True`, which removes the punctuation
-before counting lexicon items.
+Default is `'en_us'`.
 
 ### Sentence Count
 
@@ -87,6 +108,38 @@ TextStat.sentence_count(text)
 
 Returns the number of sentences present in the given text.
 
+### Average sentence length
+
+```ruby
+TextStat.avg_sentence_length(text)
+```
+
+### Average syllables per word
+
+```ruby
+TextStat.avg_syllables_per_word(text)
+```
+
+Returns the average syllables per word in the given text.
+
+### Average letters per word
+
+```ruby
+TextStat.avg_letter_per_word(text)
+```
+
+Returns the average letters per word in the given text.
+
+### Difficult words
+
+```ruby
+TextStat.difficult_words(text, language = 'en_us')
+```
+
+Returns the number of difficult words in the given text.
+Optional `language` specifies which language dictionary to use.
+
+Default is `'en_us'`
 
 ### The Flesch Reading Ease formula
 
@@ -221,6 +274,49 @@ the grade level using the New Dale-Chall Formula.
 > Further reading on
 [Wikipedia](https://en.wikipedia.org/wiki/Dale%E2%80%93Chall_readability_formula)
 
+### Lix Readability Formula
+
+```ruby
+TextStat.lix(text)
+```
+
+Returns the grade level of the text using the Lix Formula.
+> Further reading on
+[Wikipedia](https://en.wikipedia.org/wiki/Lix_(readability_test))
+
+
+### FORCAST Readability Formula
+
+```ruby
+TextStat.forcast(text)
+```
+
+Returns the grade level of the text using the FORCAST Readability Formula.
+> Further reading on
+[readabilityformulas.com](https://readabilityformulas.com/forcast-readability-results.php)
+
+### Powers-Sumner-Kearl Readability Formula
+
+```ruby
+TextStat.powers_sumner_kearl(text)
+```
+
+Returns the grade level of the text using the Powers-Sumner-Kearl Readability Formula.
+> Further reading on
+[readabilityformulas.com](https://readabilityformulas.com/powers-sumner-kear-readability-formula.php)
+
+
+### SPACHE Readability Formula
+
+```ruby
+TextStat.spache(text)
+```
+
+Returns the grade level of the text using the Spache Readability Formula.
+> Further reading on
+[Wikipedia](https://en.wikipedia.org/wiki/Spache_readability_formula)
+
+
 ### Readability Consensus based upon all the above tests
 
 ```ruby
@@ -256,13 +352,10 @@ Languages supported:
 
 ## TODO
 
-- [ ] Performance optimization
-- [ ] CEFR levels
-
-Dictionary (2000 words):
+Dictionary (~2000 words):
 - [ ] UK English
 - [ ] Irish Gaelic
-- [ ] Croatian
+- [x] Croatian
 - [ ] Upper Sorbian
 - [ ] Interlingua
 - [ ] Mongolian
