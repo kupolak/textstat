@@ -164,6 +164,11 @@ describe TextStat do
       expect(score).to eql 25.04
     end
 
+    it 'should return the correct SPACHE readability test score' do
+      score = TextStat.spache(@long_test)
+      expect(score).to eql 4.12
+    end
+
     it 'should return the readability consensus score' do
       standard = TextStat.text_standard(@long_test)
       expect(standard).to eql '10th and 11th grade'

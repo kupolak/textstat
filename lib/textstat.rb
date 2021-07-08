@@ -214,6 +214,13 @@ class TextStat
     grade.round(2)
   end
 
+  def self.spache(text, language = 'en_us')
+    words = text.split(' ').count
+    unfamiliar_words = difficult_words(text, language) / words
+    grade = (0.141 * avg_sentence_length(text)) + (0.086 * unfamiliar_words) + 0.839
+    grade.round(2)
+  end
+
   def self.text_standard(text, float_output=nil)
     grade = []
 
