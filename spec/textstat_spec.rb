@@ -154,6 +154,11 @@ describe TextStat do
       expect(score).to eql 45.11
     end
 
+    it 'should return the correct FORCAST readability test score' do
+      score = TextStat.forcast(@long_test)
+      expect(score).to eql 10
+    end
+
     it 'should return the readability consensus score' do
       standard = TextStat.text_standard(@long_test)
       expect(standard).to eql '10th and 11th grade'

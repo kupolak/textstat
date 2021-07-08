@@ -200,6 +200,15 @@ class TextStat
     lix.round(2)
   end
 
+  def self.forcast(text, language = 'en_us')
+    words = text.split(' ')[0..149]
+    words_with_one_syllabe = words.count {
+      |word| syllable_count(word, language) == 1
+    }
+    forcast = 20 - (words_with_one_syllabe / 10)
+    forcast
+  end
+
   def self.text_standard(text, float_output=nil)
     grade = []
 
