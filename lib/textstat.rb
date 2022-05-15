@@ -39,8 +39,8 @@ class TextStat
     0.0
   end
 
-  def self.avg_syllables_per_word(text)
-    syllable = syllable_count(text)
+  def self.avg_syllables_per_word(text, language = 'en_us')
+    syllable = syllable_count(text, language)
     words    = lexicon_count(text)
     begin
       syllables_per_word = syllable.to_f / words
@@ -64,35 +64,35 @@ class TextStat
     0.0
   end
 
-  def self.flesch_reading_ease(text)
+  def self.flesch_reading_ease(text, language = 'en_us')
     sentence_length    = avg_sentence_length(text)
-    syllables_per_word = avg_syllables_per_word(text)
+    syllables_per_word = avg_syllables_per_word(text, language)
     flesch = 206.835 - 1.015 * sentence_length - 84.6 * syllables_per_word
     flesch.round(2)
   end
 
-  def self.flesch_kincaid_grade(text)
+  def self.flesch_kincaid_grade(text, language = 'en_us')
     sentence_length = avg_sentence_length(text)
-    syllables_per_word = avg_syllables_per_word(text)
+    syllables_per_word = avg_syllables_per_word(text, language)
     flesch = 0.39 * sentence_length + 11.8 * syllables_per_word - 15.59
     flesch.round(1)
   end
 
-  def self.polysyllab_count(text)
+  def self.polysyllab_count(text, language = 'en_us')
     count = 0
     text.split(' ').each do |word|
-      w = syllable_count(word)
+      w = syllable_count(word, language)
       count += 1 if w >= 3
     end
     count
   end
 
-  def self.smog_index(text)
+  def self.smog_index(text, language = 'en_us')
     sentences = sentence_count(text)
 
     if sentences >= 3
       begin
-        polysyllab = polysyllab_count(text)
+        polysyllab = polysyllab_count(text, language)
         smog = 1.043 * Math.sqrt(30.0 * polysyllab / sentences) + 3.1291
         smog.round(1)
       rescue ZeroDivisionError
@@ -125,13 +125,13 @@ class TextStat
     end
   end
 
-  def self.linsear_write_formula(text)
+  def self.linsear_write_formula(text, language = 'en_us')
     easy_word = 0
     difficult_word = 0
     text_list = text.split(' ')[0..100]
 
     text_list.each do |word|
-      if syllable_count(word) < 3
+      if syllable_count(word, language) < 3
         easy_word += 1
       else
         difficult_word += 1
@@ -157,14 +157,14 @@ class TextStat
     text_list.each do |value|
       next if easy_words.include? value
 
-      diff_words_set.add(value) if syllable_count(value) > 1
+      diff_words_set.add(value) if syllable_count(value, language) > 1
     end
     diff_words_set.length
   end
 
-  def self.dale_chall_readability_score(text)
+  def self.dale_chall_readability_score(text, language = 'en_us')
     word_count = lexicon_count(text)
-    count = word_count - difficult_words(text)
+    count = word_count - difficult_words(text, language)
 
     begin
       per = 100.0 * count / word_count
@@ -179,8 +179,8 @@ class TextStat
     score.round(2)
   end
 
-  def self.gunning_fog(text)
-    per_diff_words = 100.0 * difficult_words(text) / lexicon_count(text) + 5
+  def self.gunning_fog(text, language = 'en_us')
+    per_diff_words = 100.0 * difficult_words(text, language) / lexicon_count(text) + 5
     grade = 0.4 * (avg_sentence_length(text) + per_diff_words)
 
     grade.round(2)
@@ -209,8 +209,8 @@ class TextStat
     forcast
   end
 
-  def self.powers_sumner_kearl(text)
-    grade = 0.0778 * avg_sentence_length(text) + 0.0455 * syllable_count(text) - 2.2029
+  def self.powers_sumner_kearl(text, language = 'en_us')
+    grade = 0.0778 * avg_sentence_length(text) + 0.0455 * syllable_count(text, language) - 2.2029
     grade.round(2)
   end
 
