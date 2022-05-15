@@ -90,7 +90,7 @@ before counting lexicon items.
 ### Syllable Count
 
 ```ruby
-TextStat.syllable_count(text, lang='en_us')
+TextStat.syllable_count(text, language = 'en_us')
 ```
 
 Returns the number of syllables present in the given text.
@@ -117,7 +117,7 @@ TextStat.avg_sentence_length(text)
 ### Average syllables per word
 
 ```ruby
-TextStat.avg_syllables_per_word(text)
+TextStat.avg_syllables_per_word(text, language = 'en_us')
 ```
 
 Returns the average syllables per word in the given text.
@@ -144,7 +144,7 @@ Default is `'en_us'`
 ### The Flesch Reading Ease formula
 
 ```ruby
-TextStat.flesch_reading_ease(text)
+TextStat.flesch_reading_ease(text, language = 'en_us')
 ```
 
 Returns the Flesch Reading Ease Score.
@@ -172,7 +172,7 @@ the score can be. A negative score is valid.
 ### The Flesch-Kincaid Grade Level
 
 ```ruby
-TextStat.flesch_kincaid_grade(text)
+TextStat.flesch_kincaid_grade(text, language = 'en_us')
 ```
 
 Returns the Flesch-Kincaid Grade of the given text. This is a grade
@@ -185,7 +185,7 @@ read the document.
 ### The Fog Scale (Gunning FOG Formula)
 
 ```ruby
-TextStat.gunning_fog(text)
+TextStat.gunning_fog(text, language = 'en_us')
 ```
 
 Returns the FOG index of the given text. This is a grade formula in that
@@ -197,7 +197,7 @@ a score of 9.3 means that a ninth grader would be able to read the document.
 ### The SMOG Index
 
 ```ruby
-TextStat.smog_index(text)
+TextStat.smog_index(text, language = 'en_us')
 ```
 
 Returns the SMOG index of the given text. This is a grade formula in that
@@ -242,7 +242,7 @@ able to read the document.
 ### Linsear Write Formula
 
 ```ruby
-TextStat.linsear_write_formula(text)
+TextStat.linsear_write_formula(text, language = 'en_us')
 ```
 
 Returns the grade level using the Linsear Write Formula. This is
@@ -255,7 +255,7 @@ able to read the document.
 ### Dale-Chall Readability Score
 
 ```ruby
-TextStat.dale_chall_readability_score(text)
+TextStat.dale_chall_readability_score(text, language = 'en_us')
 ```
 
 Different from other tests, since it uses a lookup table
@@ -288,7 +288,7 @@ Returns the grade level of the text using the Lix Formula.
 ### FORCAST Readability Formula
 
 ```ruby
-TextStat.forcast(text)
+TextStat.forcast(text, language = 'en_us')
 ```
 
 Returns the grade level of the text using the FORCAST Readability Formula.
@@ -298,7 +298,7 @@ Returns the grade level of the text using the FORCAST Readability Formula.
 ### Powers-Sumner-Kearl Readability Formula
 
 ```ruby
-TextStat.powers_sumner_kearl(text)
+TextStat.powers_sumner_kearl(text, language = 'en_us')
 ```
 
 Returns the grade level of the text using the Powers-Sumner-Kearl Readability Formula.
@@ -309,7 +309,7 @@ Returns the grade level of the text using the Powers-Sumner-Kearl Readability Fo
 ### SPACHE Readability Formula
 
 ```ruby
-TextStat.spache(text)
+TextStat.spache(text, language = 'en_us')
 ```
 
 Returns the grade level of the text using the Spache Readability Formula.
