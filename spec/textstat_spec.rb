@@ -135,7 +135,7 @@ describe TextStat do
     end
 
     it 'should return the correct difficult words result' do
-      result = TextStat.difficult_words(@long_test)
+      result = TextStat.difficult_words(@long_test).length
       expect(result).to eql 58
     end
 

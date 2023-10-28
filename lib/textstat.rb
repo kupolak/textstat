@@ -164,7 +164,7 @@ class TextStat
 
   def self.dale_chall_readability_score(text, language = 'en_us')
     word_count = lexicon_count(text)
-    count = word_count - difficult_words(text, language)
+    count = word_count - difficult_words(text, language).length
 
     begin
       per = 100.0 * count / word_count
@@ -180,7 +180,7 @@ class TextStat
   end
 
   def self.gunning_fog(text, language = 'en_us')
-    per_diff_words = 100.0 * difficult_words(text, language) / lexicon_count(text) + 5
+    per_diff_words = 100.0 * difficult_words(text, language).length / lexicon_count(text) + 5
     grade = 0.4 * (avg_sentence_length(text) + per_diff_words)
 
     grade.round(2)
@@ -216,7 +216,7 @@ class TextStat
 
   def self.spache(text, language = 'en_us')
     words = text.split(' ').count
-    unfamiliar_words = difficult_words(text, language) / words
+    unfamiliar_words = difficult_words(text, language).length / words
     grade = (0.141 * avg_sentence_length(text)) + (0.086 * unfamiliar_words) + 0.839
     grade.round(2)
   end
