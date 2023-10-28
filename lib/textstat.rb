@@ -159,7 +159,7 @@ class TextStat
 
       diff_words_set.add(value) if syllable_count(value, language) > 1
     end
-    diff_words_set.length
+    diff_words_set
   end
 
   def self.dale_chall_readability_score(text, language = 'en_us')
