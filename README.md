@@ -1,7 +1,38 @@
-# Texstat 
+# Textstat 
 Ruby gem to calculate statistics from text to determine readability, complexity and grade level of a particular corpus.
 
-## Usage
+## Table of Contents
+
+- [Usage](#usage)
+- [Installation](#installation)
+- [List of Functions](#list-of-functions)
+  - [Basic Functions](#basic-functions)
+    - [Char Count](#char-count)
+    - [Lexicon Count](#lexicon-count)
+    - [Syllable Count](#syllable-count)
+    - [Sentence Count](#sentence-count)
+    - [Average sentence length](#average-sentence-length)
+    - [Average syllables per word](#average-syllables-per-word)
+    - [Average letters per word](#average-letters-per-word)
+    - [Difficult words](#difficult-words)
+  - [Advanced Formulas](#advanced-formulas)
+    - [The Flesch Reading Ease formula](#the-flesch-reading-ease-formula)
+    - [The Flesch-Kincaid Grade Level](#the-flesch-kincaid-grade-level)
+    - [The Fog Scale (Gunning FOG Formula)](#the-fog-scale-gunning-fog-formula)
+    - [The SMOG Index](#the-smog-index)
+    - [Automated Readability Index](#automated-readability-index)
+    - [The Coleman-Liau Index](#the-coleman-liau-index)
+    - [Linsear Write Formula](#linsear-write-formula)
+    - [Dale-Chall Readability Score](#dale-chall-readability-score)
+    - [Lix Readability Formula](#lix-readability-formula)
+    - [FORCAST Readability Formula](#forcast-readability-formula)
+    - [Powers-Sumner-Kearl Readability Formula](#powers-sumner-kearl-readability-formula)
+    - [SPACHE Readability Formula](#spache-readability-formula)
+    - [Readability Consensus based upon all the above tests](#readability-consensus-based-upon-all-the-above-tests)
+- [Contributing](#contributing)
+- [Development setup](#development-setup)
+
+# Usage
 
 ```ruby
 require 'textstat'
@@ -48,7 +79,8 @@ TextStat.text_standard(test_data)
 
 The argument (text) for all the defined functions remains the same -
 i.e the text for which statistics need to be calculated.
-## Installation
+
+# Installation
 
 Add this line to your application's Gemfile:
 
@@ -63,7 +95,10 @@ And then execute:
 Or install it yourself as:
 
      gem install textstat
-## List of Functions
+
+# List of Functions
+
+## Basic functions
 
 ### Char Count
 
@@ -141,6 +176,8 @@ Optional `language` specifies which language dictionary to use.
 
 Default is `'en_us'`
 
+## Advanced formulas
+
 ### The Flesch Reading Ease formula
 
 ```ruby
@@ -156,15 +193,15 @@ The table is an _example_ of values. While the
 maximum score is 121.22, there is no limit on how low
 the score can be. A negative score is valid.
 
-| Score |    Difficulty     |
-|-------|-------------------|
-|90-100 | Very Easy         |
-| 80-89 | Easy              |
-| 70-79 | Fairly Easy       |
-| 60-69 | Standard          |
-| 50-59 | Fairly Difficult  |
-| 30-49 | Difficult         |
-| 0-29  | Very Confusing    |
+| Score  | Difficulty       |
+|--------|------------------|
+| 90-100 | Very Easy        |
+| 80-89  | Easy             |
+| 70-79  | Fairly Easy      |
+| 60-69  | Standard         |
+| 50-59  | Fairly Difficult |
+| 30-49  | Difficult        |
+| 0-29   | Very Confusing   |
 
 > Further reading on
 [Wikipedia](https://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_tests#Flesch_reading_ease)
@@ -262,14 +299,14 @@ Different from other tests, since it uses a lookup table
 of the most commonly used 3000 English words. Thus it returns
 the grade level using the New Dale-Chall Formula.
 
-| Score       |  Understood by                                |
-|-------------|-----------------------------------------------|
-|4.9 or lower | average 4th-grade student or lower            |
-|  5.0–5.9    | average 5th or 6th-grade student              |
-|  6.0–6.9    | average 7th or 8th-grade student              |
-|  7.0–7.9    | average 9th or 10th-grade student             |
-|  8.0–8.9    | average 11th or 12th-grade student            |
-|  9.0–9.9    | average 13th to 15th-grade (college) student  |
+| Score        | Understood by                                |
+|--------------|----------------------------------------------|
+| 4.9 or lower | average 4th-grade student or lower           |
+| 5.0–5.9      | average 5th or 6th-grade student             |
+| 6.0–6.9      | average 7th or 8th-grade student             |
+| 7.0–7.9      | average 9th or 10th-grade student            |
+| 8.0–8.9      | average 11th or 12th-grade student           |
+| 9.0–9.9      | average 13th to 15th-grade (college) student |
 
 > Further reading on
 [Wikipedia](https://en.wikipedia.org/wiki/Dale%E2%80%93Chall_readability_formula)
@@ -350,18 +387,7 @@ Languages supported:
 - Russian
 - Swedish
 
-## TODO
-
-Dictionary (~2000 words):
-- [ ] UK English
-- [ ] Irish Gaelic
-- [x] Croatian
-- [ ] Upper Sorbian
-- [ ] Interlingua
-- [ ] Mongolian
-- [ ] Nynorsk (Norwegian)
-
-## Contributing
+# Contributing
 
 If you find any problems, you should open an
 [issue](https://github.com/kupolak/textstat/issues).
@@ -374,7 +400,7 @@ branch (or branch off of it).
 2. Write a test which shows that the bug was fixed or that the feature works as expected.
 3. Send a pull request!
 
-### Development setup
+# Development setup
 
 ```bash
 git clone https://github.com/kupolak/textstat.git  # Clone the repo from your fork
