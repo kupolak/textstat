@@ -135,8 +135,13 @@ describe TextStat do
     end
 
     it 'should return the correct difficult words result' do
-      result = TextStat.difficult_words(@long_test).length
+      result = TextStat.difficult_words(@long_test)
       expect(result).to eql 58
+    end
+
+    it 'should return the correct difficult words list result' do
+      result = TextStat.difficult_words(text = @long_test, language = 'en_us', return_words: true)
+      expect(result).to be_a Set
     end
 
     it 'should return the correct Dale–Chall readability score' do
