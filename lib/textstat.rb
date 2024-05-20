@@ -145,7 +145,7 @@ class TextStat
     number / 2
   end
 
-  def self.difficult_words(text, language = 'en_us')
+  def self.difficult_words(text, language = 'en_us', return_words = false)
     require 'set'
     easy_words = Set.new
     File.read(File.join(dictionary_path, "#{language}.txt")).each_line do |line|
@@ -159,7 +159,11 @@ class TextStat
 
       diff_words_set.add(value) if syllable_count(value, language) > 1
     end
-    diff_words_set.length
+    if return_words
+      diff_words_set
+    else
+      diff_words_set.length
+    end
   end
 
   def self.dale_chall_readability_score(text, language = 'en_us')

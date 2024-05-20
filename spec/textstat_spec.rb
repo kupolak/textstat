@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../lib/textstat.rb'
+require_relative '../lib/textstat'
 
 describe TextStat do
   before do
@@ -137,6 +137,11 @@ describe TextStat do
     it 'should return the correct difficult words result' do
       result = TextStat.difficult_words(@long_test)
       expect(result).to eql 58
+    end
+
+    it 'should return the correct difficult words list result' do
+      result = TextStat.difficult_words(@long_test, 'en_us', true)
+      expect(result).to be_a Set
     end
 
     it 'should return the correct Dale–Chall readability score' do
