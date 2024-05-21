@@ -368,6 +368,7 @@ Optional `float_output` allows the score to be returned as a
 
 Languages supported:
 - US English
+- UK English
 - Catalan
 - Czech
 - Danish

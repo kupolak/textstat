@@ -1,5 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
+
+## 0.1.9 2024-05-21
+### Added
+(by @Niall47)
+- Allow difficult_words method to return the set
+- and add en_uk dictionary
+
 ## 0.1.8 2022-05-15
 ### Added
 Optional language parameters for various algorithms
