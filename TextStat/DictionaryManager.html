@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: TextStat::DictionaryManager
+  
+    &mdash; TextStat - Ruby Text Readability Analysis
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "TextStat::DictionaryManager";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (D)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span>
+     &raquo; 
+    <span class="title">DictionaryManager</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: TextStat::DictionaryManager
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="Main.html" title="TextStat::Main (class)">Main</a></span></dd>
+  </dl>
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/textstat/dictionary_manager.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Dictionary management with high-performance caching</p>
+
+<p>This module handles loading and caching of language-specific dictionaries
+used for identifying difficult words. The caching system provides a 36x
+performance improvement over reading dictionaries from disk on every call.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Performance optimization</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='comment'># First call loads dictionary from disk
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en_us</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># ~0.047s
+</span>
+<span class='comment'># Subsequent calls use cached dictionary
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en_us</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># ~0.0013s (36x faster!)
+</span>
+<span class='comment'># Check cache status
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'>DictionaryManager</span><span class='period'>.</span><span class='id identifier rubyid_cache_size'><span class='object_link'><a href="#cache_size-class_method" title="TextStat::DictionaryManager.cache_size (method)">cache_size</a></span></span>        <span class='comment'># =&gt; 1
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'>DictionaryManager</span><span class='period'>.</span><span class='id identifier rubyid_cached_languages'><span class='object_link'><a href="#cached_languages-class_method" title="TextStat::DictionaryManager.cached_languages (method)">cached_languages</a></span></span>  <span class='comment'># =&gt; [&#39;en_us&#39;]</span></code></pre>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Multi-language support</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_english_text'>english_text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en_us</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_spanish_text'>spanish_text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>es</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_french_text'>french_text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'>DictionaryManager</span><span class='period'>.</span><span class='id identifier rubyid_cache_size'><span class='object_link'><a href="#cache_size-class_method" title="TextStat::DictionaryManager.cache_size (method)">cache_size</a></span></span>  <span class='comment'># =&gt; 3</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>Jakub Polak</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+  <h2>Class Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dictionary_cache-class_method" title="dictionary_cache (class method)">.<strong>dictionary_cache</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cache_size-class_method" title="cache_size (class method)">.<strong>cache_size</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Get number of cached dictionaries.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#cached_languages-class_method" title="cached_languages (class method)">.<strong>cached_languages</strong>  &#x21d2; Array&lt;String&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Get list of cached languages.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear_cache-class_method" title="clear_cache (class method)">.<strong>clear_cache</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Clear all cached dictionaries.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dictionary_path-class_method" title="dictionary_path (class method)">.<strong>dictionary_path</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Get path to dictionary files.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dictionary_path=-class_method" title="dictionary_path= (class method)">.<strong>dictionary_path=</strong>(path)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Set dictionary path.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_dictionary-class_method" title="load_dictionary (class method)">.<strong>load_dictionary</strong>(language)  &#x21d2; Set </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Load dictionary with automatic caching.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#difficult_words-instance_method" title="#difficult_words (instance method)">#<strong>difficult_words</strong>(text, language = &#39;en_us&#39;, return_words = false)  &#x21d2; Integer, Set </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Count difficult words in text.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="dictionary_cache=-class_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="dictionary_cache-class_method">
+  
+    .<strong>dictionary_cache</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+34
+35
+36</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 34</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dictionary_cache'>dictionary_cache</span>
+  <span class='ivar'>@dictionary_cache</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="cache_size-class_method">
+  
+    .<strong>cache_size</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Get number of cached dictionaries</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cache_size'>cache_size</span>  <span class='comment'># =&gt; 3</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of dictionaries currently in cache</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+105
+106
+107</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 105</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cache_size'>cache_size</span>
+  <span class='ivar'>@dictionary_cache</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="cached_languages-class_method">
+  
+    .<strong>cached_languages</strong>  &#x21d2; <tt>Array&lt;String&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Get list of cached languages</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cached_languages'>cached_languages</span>  <span class='comment'># =&gt; [&#39;en_us&#39;, &#39;es&#39;, &#39;fr&#39;]</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>array of language codes currently in cache</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_cached_languages'>cached_languages</span>
+  <span class='ivar'>@dictionary_cache</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="clear_cache-class_method">
+  
+    .<strong>clear_cache</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Clear all cached dictionaries</p>
+
+<p>Removes all dictionaries from memory cache. Useful for memory management
+in long-running applications or when switching between different sets
+of languages.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cache_size'><span class='object_link'><a href="#cache_size-class_method" title="TextStat::DictionaryManager.cache_size (method)">cache_size</a></span></span>  <span class='comment'># =&gt; 3
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear_cache'>clear_cache</span>
+<span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_cache_size'><span class='object_link'><a href="#cache_size-class_method" title="TextStat::DictionaryManager.cache_size (method)">cache_size</a></span></span>  <span class='comment'># =&gt; 0</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>empty cache hash</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clear_cache'>clear_cache</span>
+  <span class='ivar'>@dictionary_cache</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dictionary_path-class_method">
+  
+    .<strong>dictionary_path</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Get path to dictionary files</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dictionary_path'>dictionary_path</span>
+<span class='comment'># =&gt; \&quot;/path/to/gem/lib/dictionaries\&quot;</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>absolute path to dictionary directory</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+115
+116
+117</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 115</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dictionary_path'>dictionary_path</span>
+  <span class='ivar'>@dictionary_path</span> <span class='op'>||=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../TextStat.html#GEM_PATH-constant" title="TextStat::GEM_PATH (constant)">GEM_PATH</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lib</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>dictionaries</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dictionary_path=-class_method">
+  
+    .<strong>dictionary_path=</strong>(path)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Set dictionary path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>path to dictionary directory</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the set path</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 40</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dictionary_path='>dictionary_path=</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='ivar'>@dictionary_path</span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load_dictionary-class_method">
+  
+    .<strong>load_dictionary</strong>(language)  &#x21d2; <tt>Set</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Load dictionary with automatic caching</p>
+
+<p>Loads a language-specific dictionary from disk and caches it in memory
+for subsequent calls. This provides significant performance improvements
+for repeated operations.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_dict'>dict</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_dictionary'>load_dictionary</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en_us</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_dict'>dict</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>hello</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; true
+</span><span class='id identifier rubyid_dict'>dict</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>comprehensive</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; false</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>language code (e.g., &#39;en_us&#39;, &#39;es&#39;, &#39;fr&#39;)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Set</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>set of easy words for the specified language</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>#supported_languages</li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 57</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load_dictionary'>load_dictionary</span><span class='lparen'>(</span><span class='id identifier rubyid_language'>language</span><span class='rparen'>)</span>
+  <span class='comment'># Return cached dictionary if available
+</span>  <span class='kw'>return</span> <span class='ivar'>@dictionary_cache</span><span class='lbracket'>[</span><span class='id identifier rubyid_language'>language</span><span class='rbracket'>]</span> <span class='kw'>if</span> <span class='ivar'>@dictionary_cache</span><span class='lbracket'>[</span><span class='id identifier rubyid_language'>language</span><span class='rbracket'>]</span>
+
+  <span class='comment'># Load dictionary from file
+</span>  <span class='id identifier rubyid_dictionary_file'>dictionary_file</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span><span class='lparen'>(</span><span class='id identifier rubyid_dictionary_path'>dictionary_path</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_language'>language</span><span class='embexpr_end'>}</span><span class='tstring_content'>.txt</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_easy_words'>easy_words</span> <span class='op'>=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+
+  <span class='kw'>if</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_dictionary_file'>dictionary_file</span><span class='rparen'>)</span>
+    <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='id identifier rubyid_dictionary_file'>dictionary_file</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_each_line'>each_line</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_line'>line</span><span class='op'>|</span>
+      <span class='id identifier rubyid_easy_words'>easy_words</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_line'>line</span><span class='period'>.</span><span class='id identifier rubyid_chomp'>chomp</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># Cache the loaded dictionary
+</span>  <span class='ivar'>@dictionary_cache</span><span class='lbracket'>[</span><span class='id identifier rubyid_language'>language</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_easy_words'>easy_words</span>
+  <span class='id identifier rubyid_easy_words'>easy_words</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="difficult_words-instance_method">
+  
+    #<strong>difficult_words</strong>(text, language = &#39;en_us&#39;, return_words = false)  &#x21d2; <tt>Integer</tt>, <tt>Set</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Count difficult words in text</p>
+
+<p>Identifies words that are considered difficult based on:</p>
+
+<ol>
+<li>Not being in the language&#39;s easy words dictionary</li>
+<li>Having more than one syllable</li>
+</ol>
+
+<p>This method uses the cached dictionary system for optimal performance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Count difficult words</p>
+</div></h5>
+      
+      <pre class="example code"><code>TextStat.difficult_words(\&quot;This is a comprehensive analysis\&quot;)  # =&gt; 2</code></pre>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Get list of difficult words</p>
+</div></h5>
+      
+      <pre class="example code"><code>words = TextStat.difficult_words(\&quot;comprehensive analysis\&quot;, &#39;en_us&#39;, true)
+words.to_a  # =&gt; [\&quot;comprehensive\&quot;, \&quot;analysis\&quot;]</code></pre>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Multi-language support</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_spanish_text'>spanish_text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>es</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># Spanish dictionary
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_french_text'>french_text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>   <span class='comment'># French dictionary</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for dictionary selection</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>return_words</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>whether to return words array or count</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt>Set</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of difficult words or set of difficult words</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/dictionary_manager.rb', line 142</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='id identifier rubyid_language'>language</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en_us</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_return_words'>return_words</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_easy_words'>easy_words</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_dictionary'><span class='object_link'><a href="#load_dictionary-class_method" title="TextStat::DictionaryManager.load_dictionary (method)">load_dictionary</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_language'>language</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_text_list'>text_list</span> <span class='op'>=</span> <span class='id identifier rubyid_text'>text</span><span class='period'>.</span><span class='id identifier rubyid_downcase'>downcase</span><span class='period'>.</span><span class='id identifier rubyid_gsub'>gsub</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>[^0-9a-z ]</span><span class='regexp_end'>/i</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span>
+  <span class='id identifier rubyid_diff_words_set'>diff_words_set</span> <span class='op'>=</span> <span class='const'>Set</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='id identifier rubyid_text_list'>text_list</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_value'>value</span><span class='op'>|</span>
+    <span class='kw'>next</span> <span class='kw'>if</span> <span class='id identifier rubyid_easy_words'>easy_words</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_value'>value</span>
+
+    <span class='id identifier rubyid_diff_words_set'>diff_words_set</span><span class='period'>.</span><span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_syllable_count'>syllable_count</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='comma'>,</span> <span class='id identifier rubyid_language'>language</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='int'>1</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_return_words'>return_words</span> <span class='op'>?</span> <span class='id identifier rubyid_diff_words_set'>diff_words_set</span> <span class='op'>:</span> <span class='id identifier rubyid_diff_words_set'>diff_words_set</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Tue Jul  8 04:20:42 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.1.7).
+</div>
+
+    </div>
+  </body>
+</html>

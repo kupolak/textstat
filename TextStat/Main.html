@@ -1,0 +1,4126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: TextStat::Main
+  
+    &mdash; TextStat - Ruby Text Readability Analysis
+  
+</title>
+
+  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "TextStat::Main";
+  relpath = '../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../_index.html">Index (M)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span>
+     &raquo; 
+    <span class="title">Main</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: TextStat::Main
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">TextStat::Main</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  <dl>
+      <dt>Includes:</dt>
+      <dd><span class='object_link'><a href="BasicStats.html" title="TextStat::BasicStats (module)">BasicStats</a></span>, <span class='object_link'><a href="DictionaryManager.html" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span>, <span class='object_link'><a href="ReadabilityFormulas.html" title="TextStat::ReadabilityFormulas (module)">ReadabilityFormulas</a></span></dd>
+  </dl>
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/textstat/main.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Main class providing text readability analysis</p>
+
+<p>This class combines all TextStat modules to provide a unified interface
+for text analysis. It includes basic statistics, dictionary management,
+and readability formulas in a single class.</p>
+
+<p>The class maintains backward compatibility through method delegation,
+ensuring that existing code continues to work seamlessly.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Creating an instance</p>
+</div></h5>
+      
+      <pre class="example code"><code>analyzer = TextStat::Main.new
+analyzer.flesch_reading_ease(\&quot;Sample text\&quot;)  # =&gt; 83.32</code></pre>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Using class methods (backward compatibility)</p>
+</div></h5>
+      
+      <pre class="example code"><code>TextStat::Main.flesch_reading_ease(\&quot;Sample text\&quot;)  # =&gt; 83.32
+TextStat.flesch_reading_ease(\&quot;Sample text\&quot;)        # =&gt; 83.32</code></pre>
+    
+  </div>
+
+<p class="tag_title">Author:</p>
+<ul class="author">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>Jakub Polak</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+
+
+  <h2>Class Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dictionary_cache-class_method" title="dictionary_cache (class method)">.<strong>dictionary_cache</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      extended
+      from <span class='object_link'><a href="DictionaryManager.html#dictionary_cache-class_method" title="TextStat::DictionaryManager.dictionary_cache (method)">DictionaryManager</a></span>
+    </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#clear_dictionary_cache-class_method" title="clear_dictionary_cache (class method)">.<strong>clear_dictionary_cache</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Clear all cached dictionaries.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dictionary_path-class_method" title="dictionary_path (class method)">.<strong>dictionary_path</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Get current dictionary path.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dictionary_path=-class_method" title="dictionary_path= (class method)">.<strong>dictionary_path=</strong>(path)  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Set dictionary path for all instances.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#load_dictionary-class_method" title="load_dictionary (class method)">.<strong>load_dictionary</strong>(language)  &#x21d2; Set </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Load dictionary for specified language.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#add_flesch_kincaid_grades-instance_method" title="#add_flesch_kincaid_grades (instance method)">#<strong>add_flesch_kincaid_grades</strong>(text, grade)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#add_flesch_kincaid_grades-instance_method" title="TextStat::ReadabilityFormulas#add_flesch_kincaid_grades (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add Flesch-Kincaid grade levels to grade array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#add_flesch_reading_ease_grade-instance_method" title="#add_flesch_reading_ease_grade (instance method)">#<strong>add_flesch_reading_ease_grade</strong>(text, grade)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#add_flesch_reading_ease_grade-instance_method" title="TextStat::ReadabilityFormulas#add_flesch_reading_ease_grade (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add Flesch Reading Ease grade level to grade array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#add_other_readability_grades-instance_method" title="#add_other_readability_grades (instance method)">#<strong>add_other_readability_grades</strong>(text, grade)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#add_other_readability_grades-instance_method" title="TextStat::ReadabilityFormulas#add_other_readability_grades (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Add other readability formula grades to grade array.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#automated_readability_index-instance_method" title="#automated_readability_index (instance method)">#<strong>automated_readability_index</strong>(text)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#automated_readability_index-instance_method" title="TextStat::ReadabilityFormulas#automated_readability_index (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Automated Readability Index (ARI).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#avg_letter_per_word-instance_method" title="#avg_letter_per_word (instance method)">#<strong>avg_letter_per_word</strong>(text)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#avg_letter_per_word-instance_method" title="TextStat::BasicStats#avg_letter_per_word (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate average letters per word.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#avg_sentence_length-instance_method" title="#avg_sentence_length (instance method)">#<strong>avg_sentence_length</strong>(text)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#avg_sentence_length-instance_method" title="TextStat::BasicStats#avg_sentence_length (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate average sentence length.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#avg_sentence_per_word-instance_method" title="#avg_sentence_per_word (instance method)">#<strong>avg_sentence_per_word</strong>(text)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#avg_sentence_per_word-instance_method" title="TextStat::BasicStats#avg_sentence_per_word (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate average sentences per word.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#avg_syllables_per_word-instance_method" title="#avg_syllables_per_word (instance method)">#<strong>avg_syllables_per_word</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#avg_syllables_per_word-instance_method" title="TextStat::BasicStats#avg_syllables_per_word (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate average syllables per word.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#calculate_consensus_grade-instance_method" title="#calculate_consensus_grade (instance method)">#<strong>calculate_consensus_grade</strong>(grade)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#calculate_consensus_grade-instance_method" title="TextStat::ReadabilityFormulas#calculate_consensus_grade (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate consensus grade from all collected grades.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#char_count-instance_method" title="#char_count (instance method)">#<strong>char_count</strong>(text, ignore_spaces = true)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#char_count-instance_method" title="TextStat::BasicStats#char_count (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Count characters in text.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#coleman_liau_index-instance_method" title="#coleman_liau_index (instance method)">#<strong>coleman_liau_index</strong>(text)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#coleman_liau_index-instance_method" title="TextStat::ReadabilityFormulas#coleman_liau_index (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Coleman-Liau Index.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#dale_chall_readability_score-instance_method" title="#dale_chall_readability_score (instance method)">#<strong>dale_chall_readability_score</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#dale_chall_readability_score-instance_method" title="TextStat::ReadabilityFormulas#dale_chall_readability_score (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Dale-Chall Readability Score.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#difficult_words-instance_method" title="#difficult_words (instance method)">#<strong>difficult_words</strong>(text, language = &#39;en_us&#39;, return_words = false)  &#x21d2; Integer, Set </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="DictionaryManager.html#difficult_words-instance_method" title="TextStat::DictionaryManager#difficult_words (method)">DictionaryManager</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Count difficult words in text.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#flesch_kincaid_grade-instance_method" title="#flesch_kincaid_grade (instance method)">#<strong>flesch_kincaid_grade</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#flesch_kincaid_grade-instance_method" title="TextStat::ReadabilityFormulas#flesch_kincaid_grade (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Flesch-Kincaid Grade Level.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#flesch_reading_ease-instance_method" title="#flesch_reading_ease (instance method)">#<strong>flesch_reading_ease</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#flesch_reading_ease-instance_method" title="TextStat::ReadabilityFormulas#flesch_reading_ease (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Flesch Reading Ease score.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#forcast-instance_method" title="#forcast (instance method)">#<strong>forcast</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#forcast-instance_method" title="TextStat::ReadabilityFormulas#forcast (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate FORCAST Readability Formula.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="private ">
+  <span class="summary_signature">
+    
+      <a href="#format_grade_output-instance_method" title="#format_grade_output (instance method)">#<strong>format_grade_output</strong>(grade, float_output)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#format_grade_output-instance_method" title="TextStat::ReadabilityFormulas#format_grade_output (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  <span class="note title private">private</span>
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Format grade output based on float_output parameter.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#gunning_fog-instance_method" title="#gunning_fog (instance method)">#<strong>gunning_fog</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#gunning_fog-instance_method" title="TextStat::ReadabilityFormulas#gunning_fog (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Gunning Fog Index.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lexicon_count-instance_method" title="#lexicon_count (instance method)">#<strong>lexicon_count</strong>(text, remove_punctuation = true)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#lexicon_count-instance_method" title="TextStat::BasicStats#lexicon_count (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Count words (lexicons) in text.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#linsear_write_formula-instance_method" title="#linsear_write_formula (instance method)">#<strong>linsear_write_formula</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#linsear_write_formula-instance_method" title="TextStat::ReadabilityFormulas#linsear_write_formula (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Linsear Write Formula.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#lix-instance_method" title="#lix (instance method)">#<strong>lix</strong>(text)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#lix-instance_method" title="TextStat::ReadabilityFormulas#lix (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate LIX Readability Formula.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#polysyllab_count-instance_method" title="#polysyllab_count (instance method)">#<strong>polysyllab_count</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#polysyllab_count-instance_method" title="TextStat::BasicStats#polysyllab_count (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Count polysyllabic words (3+ syllables).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#powers_sumner_kearl-instance_method" title="#powers_sumner_kearl (instance method)">#<strong>powers_sumner_kearl</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#powers_sumner_kearl-instance_method" title="TextStat::ReadabilityFormulas#powers_sumner_kearl (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate Powers-Sumner-Kearl Readability Formula.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sentence_count-instance_method" title="#sentence_count (instance method)">#<strong>sentence_count</strong>(text)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#sentence_count-instance_method" title="TextStat::BasicStats#sentence_count (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Count sentences in text.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#smog_index-instance_method" title="#smog_index (instance method)">#<strong>smog_index</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#smog_index-instance_method" title="TextStat::ReadabilityFormulas#smog_index (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate SMOG Index (Simple Measure of Gobbledygook).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#spache-instance_method" title="#spache (instance method)">#<strong>spache</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#spache-instance_method" title="TextStat::ReadabilityFormulas#spache (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate SPACHE Readability Formula.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#syllable_count-instance_method" title="#syllable_count (instance method)">#<strong>syllable_count</strong>(text, language = &#39;en_us&#39;)  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="BasicStats.html#syllable_count-instance_method" title="TextStat::BasicStats#syllable_count (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Count syllables in text using hyphenation.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#text_standard-instance_method" title="#text_standard (instance method)">#<strong>text_standard</strong>(text, float_output = nil)  &#x21d2; String, Float </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      included
+      from <span class='object_link'><a href="ReadabilityFormulas.html#text_standard-instance_method" title="TextStat::ReadabilityFormulas#text_standard (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Calculate consensus text standard from multiple formulas.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  <div id="class_attr_details" class="attr_details">
+    <h2>Class Attribute Details</h2>
+    
+      
+      <span id="dictionary_cache=-class_method"></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="dictionary_cache-class_method">
+  
+    .<strong>dictionary_cache</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="DictionaryManager.html#dictionary_cache-class_method" title="TextStat::DictionaryManager.dictionary_cache (method)">DictionaryManager</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+  </div>
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="clear_dictionary_cache-class_method">
+  
+    .<strong>clear_dictionary_cache</strong>  &#x21d2; <tt>Hash</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Clear all cached dictionaries</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::Main (class)">Main</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear_dictionary_cache'>clear_dictionary_cache</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>empty cache</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+96
+97
+98</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/main.rb', line 96</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_clear_dictionary_cache'>clear_dictionary_cache</span>
+  <span class='const'><span class='object_link'><a href="DictionaryManager.html" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_clear_cache'><span class='object_link'><a href="DictionaryManager.html#clear_cache-class_method" title="TextStat::DictionaryManager.clear_cache (method)">clear_cache</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dictionary_path-class_method">
+  
+    .<strong>dictionary_path</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Get current dictionary path</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::Main (class)">Main</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dictionary_path'>dictionary_path</span>  <span class='comment'># =&gt; \&quot;/path/to/dictionaries\&quot;</span></code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>current dictionary path</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/main.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dictionary_path'>dictionary_path</span>
+  <span class='const'><span class='object_link'><a href="DictionaryManager.html" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dictionary_path'><span class='object_link'><a href="DictionaryManager.html#dictionary_path-class_method" title="TextStat::DictionaryManager.dictionary_path (method)">dictionary_path</a></span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dictionary_path=-class_method">
+  
+    .<strong>dictionary_path=</strong>(path)  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Set dictionary path for all instances</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code>TextStat::Main.dictionary_path = \&quot;/custom/dictionaries\&quot;</code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>path</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>path to dictionary directory</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the set path</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+78
+79
+80</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/main.rb', line 78</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_dictionary_path='>dictionary_path=</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="DictionaryManager.html" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dictionary_path'><span class='object_link'><a href="DictionaryManager.html#dictionary_path-class_method" title="TextStat::DictionaryManager.dictionary_path (method)">dictionary_path</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_path'>path</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load_dictionary-class_method">
+  
+    .<strong>load_dictionary</strong>(language)  &#x21d2; <tt>Set</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Load dictionary for specified language</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="TextStat::Main (class)">Main</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_dictionary'>load_dictionary</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>en_us</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>language code</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Set</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>set of easy words for the language</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+106
+107
+108</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/textstat/main.rb', line 106</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_load_dictionary'>load_dictionary</span><span class='lparen'>(</span><span class='id identifier rubyid_language'>language</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="DictionaryManager.html" title="TextStat::DictionaryManager (module)">DictionaryManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_load_dictionary'><span class='object_link'><a href="DictionaryManager.html#load_dictionary-class_method" title="TextStat::DictionaryManager.load_dictionary (method)">load_dictionary</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_language'>language</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="add_flesch_kincaid_grades-instance_method">
+  
+    #<strong>add_flesch_kincaid_grades</strong>(text, grade)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#add_flesch_kincaid_grades-instance_method" title="TextStat::ReadabilityFormulas#add_flesch_kincaid_grades (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add Flesch-Kincaid grade levels to grade array</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_flesch_reading_ease_grade-instance_method">
+  
+    #<strong>add_flesch_reading_ease_grade</strong>(text, grade)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#add_flesch_reading_ease_grade-instance_method" title="TextStat::ReadabilityFormulas#add_flesch_reading_ease_grade (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add Flesch Reading Ease grade level to grade array</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="add_other_readability_grades-instance_method">
+  
+    #<strong>add_other_readability_grades</strong>(text, grade)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#add_other_readability_grades-instance_method" title="TextStat::ReadabilityFormulas#add_other_readability_grades (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Add other readability formula grades to grade array</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="automated_readability_index-instance_method">
+  
+    #<strong>automated_readability_index</strong>(text)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#automated_readability_index-instance_method" title="TextStat::ReadabilityFormulas#automated_readability_index (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Automated Readability Index (ARI)</p>
+
+<p>ARI uses character counts and word lengths to estimate readability.
+It&#39;s designed to be easily calculated by computer programs.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_automated_readability_index'>automated_readability_index</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>This text is easy to read.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 2.9</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>ARI grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="avg_letter_per_word-instance_method">
+  
+    #<strong>avg_letter_per_word</strong>(text)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#avg_letter_per_word-instance_method" title="TextStat::BasicStats#avg_letter_per_word (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate average letters per word</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_avg_letter_per_word'>avg_letter_per_word</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello world</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 5.0</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>average number of letters per word</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="avg_sentence_length-instance_method">
+  
+    #<strong>avg_sentence_length</strong>(text)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#avg_sentence_length-instance_method" title="TextStat::BasicStats#avg_sentence_length (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate average sentence length</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_avg_sentence_length'>avg_sentence_length</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world! How are you?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 3.0</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>average number of words per sentence</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="avg_sentence_per_word-instance_method">
+  
+    #<strong>avg_sentence_per_word</strong>(text)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#avg_sentence_per_word-instance_method" title="TextStat::BasicStats#avg_sentence_per_word (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate average sentences per word</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_avg_sentence_per_word'>avg_sentence_per_word</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world! How are you?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 0.4</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>average number of sentences per word</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="avg_syllables_per_word-instance_method">
+  
+    #<strong>avg_syllables_per_word</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#avg_syllables_per_word-instance_method" title="TextStat::BasicStats#avg_syllables_per_word (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate average syllables per word</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_avg_syllables_per_word'>avg_syllables_per_word</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>beautiful morning</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 2.5</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for hyphenation dictionary</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>average number of syllables per word</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="calculate_consensus_grade-instance_method">
+  
+    #<strong>calculate_consensus_grade</strong>(grade)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#calculate_consensus_grade-instance_method" title="TextStat::ReadabilityFormulas#calculate_consensus_grade (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate consensus grade from all collected grades</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="char_count-instance_method">
+  
+    #<strong>char_count</strong>(text, ignore_spaces = true)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#char_count-instance_method" title="TextStat::BasicStats#char_count (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Count characters in text</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_char_count'>char_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'># =&gt; 11
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_char_count'>char_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='comment'># =&gt; 12</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>ignore_spaces</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>whether to ignore spaces in counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of characters</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="coleman_liau_index-instance_method">
+  
+    #<strong>coleman_liau_index</strong>(text)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#coleman_liau_index-instance_method" title="TextStat::ReadabilityFormulas#coleman_liau_index (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Coleman-Liau Index</p>
+
+<p>This formula relies on character counts instead of syllable counts,
+making it more suitable for automated analysis. It estimates the
+U.S. grade level required to understand the text.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_coleman_liau_index'>coleman_liau_index</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Short words are easy to read.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 4.71</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Coleman-Liau grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="dale_chall_readability_score-instance_method">
+  
+    #<strong>dale_chall_readability_score</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#dale_chall_readability_score-instance_method" title="TextStat::ReadabilityFormulas#dale_chall_readability_score (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Dale-Chall Readability Score</p>
+
+<p>This formula uses a list of 3000 familiar words to determine text difficulty.
+It&#39;s particularly effective for elementary and middle school texts.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_dale_chall_readability_score'>dale_chall_readability_score</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Simple story for children.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 5.12</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for dictionary selection</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Dale-Chall readability score</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="difficult_words-instance_method">
+  
+    #<strong>difficult_words</strong>(text, language = &#39;en_us&#39;, return_words = false)  &#x21d2; <tt>Integer</tt>, <tt>Set</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="DictionaryManager.html#difficult_words-instance_method" title="TextStat::DictionaryManager#difficult_words (method)">DictionaryManager</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Count difficult words in text</p>
+
+<p>Identifies words that are considered difficult based on:</p>
+
+<ol>
+<li>Not being in the language&#39;s easy words dictionary</li>
+<li>Having more than one syllable</li>
+</ol>
+
+<p>This method uses the cached dictionary system for optimal performance.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Count difficult words</p>
+</div></h5>
+      
+      <pre class="example code"><code>TextStat.difficult_words(\&quot;This is a comprehensive analysis\&quot;)  # =&gt; 2</code></pre>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Get list of difficult words</p>
+</div></h5>
+      
+      <pre class="example code"><code>words = TextStat.difficult_words(\&quot;comprehensive analysis\&quot;, &#39;en_us&#39;, true)
+words.to_a  # =&gt; [\&quot;comprehensive\&quot;, \&quot;analysis\&quot;]</code></pre>
+    
+      
+        <h5 class="example_title"><div class='inline'><p>Multi-language support</p>
+</div></h5>
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_spanish_text'>spanish_text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>es</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>  <span class='comment'># Spanish dictionary
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_difficult_words'>difficult_words</span><span class='lparen'>(</span><span class='id identifier rubyid_french_text'>french_text</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>   <span class='comment'># French dictionary</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for dictionary selection</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>return_words</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>whether to return words array or count</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>, <tt>Set</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of difficult words or set of difficult words</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="flesch_kincaid_grade-instance_method">
+  
+    #<strong>flesch_kincaid_grade</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#flesch_kincaid_grade-instance_method" title="TextStat::ReadabilityFormulas#flesch_kincaid_grade (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Flesch-Kincaid Grade Level</p>
+
+<p>This formula converts the Flesch Reading Ease score into a U.S. grade level,
+making it easier to understand the education level required to comprehend the text.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_flesch_kincaid_grade'>flesch_kincaid_grade</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Simple text.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>      <span class='comment'># =&gt; 2.1
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_flesch_kincaid_grade'>flesch_kincaid_grade</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Complex analysis.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; 5.8</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for syllable counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>grade level (e.g., 8.5 = 8th to 9th grade)</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="flesch_reading_ease-instance_method">
+  
+    #<strong>flesch_reading_ease</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#flesch_reading_ease-instance_method" title="TextStat::ReadabilityFormulas#flesch_reading_ease (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Flesch Reading Ease score</p>
+
+<p>The Flesch Reading Ease formula produces a score between 0 and 100,
+with higher scores indicating easier readability.</p>
+
+<p>Score ranges:</p>
+
+<ul>
+<li>90-100: Very Easy</li>
+<li>80-89: Easy</li>
+<li>70-79: Fairly Easy</li>
+<li>60-69: Standard</li>
+<li>50-59: Fairly Difficult</li>
+<li>30-49: Difficult</li>
+<li>0-29: Very Difficult</li>
+</ul>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_flesch_reading_ease'>flesch_reading_ease</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The cat sat on the mat.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 116.15
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_flesch_reading_ease'>flesch_reading_ease</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Comprehensive analysis.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 43.73</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for syllable counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Flesch Reading Ease score</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="forcast-instance_method">
+  
+    #<strong>forcast</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#forcast-instance_method" title="TextStat::ReadabilityFormulas#forcast (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate FORCAST Readability Formula</p>
+
+<p>FORCAST (FOg Readability by CASTing) is designed for technical materials
+and focuses on single-syllable words to determine readability.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_forcast'>forcast</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Technical manual instructions.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 11</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze (uses first 150 words)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for syllable counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>FORCAST grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="format_grade_output-instance_method">
+  
+    #<strong>format_grade_output</strong>(grade, float_output)  &#x21d2; <tt>Object</tt>  <span class="extras">(private)</span>
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#format_grade_output-instance_method" title="TextStat::ReadabilityFormulas#format_grade_output (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Format grade output based on float_output parameter</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="gunning_fog-instance_method">
+  
+    #<strong>gunning_fog</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#gunning_fog-instance_method" title="TextStat::ReadabilityFormulas#gunning_fog (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Gunning Fog Index</p>
+
+<p>The Fog Index estimates the years of formal education needed to understand
+the text. It focuses on sentence length and polysyllabic words.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_gunning_fog'>gunning_fog</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Business communication analysis.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 12.3</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for syllable counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Gunning Fog grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="lexicon_count-instance_method">
+  
+    #<strong>lexicon_count</strong>(text, remove_punctuation = true)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#lexicon_count-instance_method" title="TextStat::BasicStats#lexicon_count (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Count words (lexicons) in text</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_lexicon_count'>lexicon_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, world!</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>       <span class='comment'># =&gt; 2
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_lexicon_count'>lexicon_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello, world!</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>false</span><span class='rparen'>)</span> <span class='comment'># =&gt; 2</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>remove_punctuation</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>true</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>whether to remove punctuation before counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of words</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="linsear_write_formula-instance_method">
+  
+    #<strong>linsear_write_formula</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#linsear_write_formula-instance_method" title="TextStat::ReadabilityFormulas#linsear_write_formula (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Linsear Write Formula</p>
+
+<p>This formula is designed for technical writing and focuses on
+the percentage of words with three or more syllables.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_linsear_write_formula'>linsear_write_formula</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Technical documentation analysis.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 6.5</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for syllable counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Linsear Write grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="lix-instance_method">
+  
+    #<strong>lix</strong>(text)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#lix-instance_method" title="TextStat::ReadabilityFormulas#lix (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate LIX Readability Formula</p>
+
+<p>LIX (Läsbarhetsindex) is a Swedish readability formula that works well
+for multiple languages. It uses sentence length and percentage of long words.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_lix'>lix</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>International readability measurement.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 45.2</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>LIX readability score</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="polysyllab_count-instance_method">
+  
+    #<strong>polysyllab_count</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#polysyllab_count-instance_method" title="TextStat::BasicStats#polysyllab_count (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Count polysyllabic words (3+ syllables)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_polysyllab_count'>polysyllab_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>beautiful complicated</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 2</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for hyphenation dictionary</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of polysyllabic words</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="powers_sumner_kearl-instance_method">
+  
+    #<strong>powers_sumner_kearl</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#powers_sumner_kearl-instance_method" title="TextStat::ReadabilityFormulas#powers_sumner_kearl (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate Powers-Sumner-Kearl Readability Formula</p>
+
+<p>This formula was developed for primary-grade reading materials and
+uses sentence length and syllable count to determine grade level.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_powers_sumner_kearl'>powers_sumner_kearl</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Elementary school reading material.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 4.2</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for syllable counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>Powers-Sumner-Kearl grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sentence_count-instance_method">
+  
+    #<strong>sentence_count</strong>(text)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#sentence_count-instance_method" title="TextStat::BasicStats#sentence_count (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Count sentences in text</p>
+
+<p>Identifies sentence boundaries using punctuation marks (.!?) followed
+by whitespace and capital letters.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sentence_count'>sentence_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hello world! How are you?</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 2
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_sentence_count'>sentence_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Dr. Smith went to the U.S.A.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='comment'># =&gt; 1</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of sentences</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="smog_index-instance_method">
+  
+    #<strong>smog_index</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#smog_index-instance_method" title="TextStat::ReadabilityFormulas#smog_index (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate SMOG Index (Simple Measure of Gobbledygook)</p>
+
+<p>SMOG estimates the years of education needed to understand a text.
+It focuses on polysyllabic words and is particularly useful for health
+and educational materials.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_smog_index'>smog_index</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>The quick brown fox jumps. It is fast. Very agile.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 8.2</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze (minimum 3 sentences)</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for syllable counting</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>SMOG grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="spache-instance_method">
+  
+    #<strong>spache</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#spache-instance_method" title="TextStat::ReadabilityFormulas#spache (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate SPACHE Readability Formula</p>
+
+<p>The SPACHE formula is designed for primary-grade reading materials
+(grades 1-4) and uses a list of familiar words for analysis.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_spache'>spache</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Primary school reading text.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>  <span class='comment'># =&gt; 2.8</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for dictionary selection</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>SPACHE grade level</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="syllable_count-instance_method">
+  
+    #<strong>syllable_count</strong>(text, language = &#39;en_us&#39;)  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#syllable_count-instance_method" title="TextStat::BasicStats#syllable_count (method)">BasicStats</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Count syllables in text using hyphenation</p>
+
+<p>Uses the text-hyphen library for accurate syllable counting across
+different languages. Supports 22 languages including English, Spanish,
+French, German, and more.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_syllable_count'>syllable_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>beautiful</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>          <span class='comment'># =&gt; 3
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_syllable_count'>syllable_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>hello</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>en_us</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>      <span class='comment'># =&gt; 2
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_syllable_count'>syllable_count</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bonjour</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>fr</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>       <span class='comment'># =&gt; 2</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>language</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>&#39;en_us&#39;</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>language code for hyphenation dictionary</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>number of syllables</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>DictionaryManager.supported_languages</li>
+    
+  </ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="text_standard-instance_method">
+  
+    #<strong>text_standard</strong>(text, float_output = nil)  &#x21d2; <tt>String</tt>, <tt>Float</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="ReadabilityFormulas.html#text_standard-instance_method" title="TextStat::ReadabilityFormulas#text_standard (method)">ReadabilityFormulas</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Calculate consensus text standard from multiple formulas</p>
+
+<p>This method combines results from multiple readability formulas to provide
+a consensus grade level recommendation. It&#39;s more reliable than using
+a single formula alone.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <h4 class="tag_title">Examples:</h4>
+    
+      
+      <pre class="example code"><code><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_text_standard'>text_standard</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sample text for analysis.</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>        <span class='comment'># =&gt; &quot;5th and 6th grade&quot;
+</span><span class='const'><span class='object_link'><a href="../TextStat.html" title="TextStat (module)">TextStat</a></span></span><span class='period'>.</span><span class='id identifier rubyid_text_standard'>text_standard</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Sample text for analysis.</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span>  <span class='comment'># =&gt; 5.0</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>text</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the text to analyze</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>float_output</span>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>whether to return numeric grade or description</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>, <tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>grade level description or numeric value</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Tue Jul  8 04:20:42 2025 by
+  <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.37 (ruby-3.1.7).
+</div>
+
+    </div>
+  </body>
+</html>
