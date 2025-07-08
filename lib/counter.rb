@@ -6,19 +6,19 @@ class Counter < Hash
     other.each_char { |e| self[e] += 1 } if other.is_a? String
   end
 
-  def +(rhs)
-    raise TypeError, "cannot add #{rhs.class} to a Counter" unless rhs.is_a? Counter
+  def +(other)
+    raise TypeError, "cannot add #{other.class} to a Counter" unless other.is_a? Counter
 
     result = Counter.new(self)
-    rhs.each { |k, v| result[k] += v }
+    other.each { |k, v| result[k] += v }
     result
   end
 
-  def -(rhs)
-    raise TypeError, "cannot subtract #{rhs.class} to a Counter" unless rhs.is_a? Counter
+  def -(other)
+    raise TypeError, "cannot subtract #{other.class} to a Counter" unless other.is_a? Counter
 
     result = Counter.new(self)
-    rhs.each { |k, v| result[k] -= v }
+    other.each { |k, v| result[k] -= v }
     result
   end
 
