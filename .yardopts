@@ -1,0 +1,19 @@
+--markup-provider=redcarpet
+--markup=markdown
+--title="TextStat - Ruby Text Readability Analysis"
+--readme=README.md
+--files=CHANGELOG.md,LICENSE.txt
+--exclude=spec/
+--exclude=benchmark_comparison.rb
+--exclude=lib/counter.rb
+--output-dir=docs
+--private
+--protected
+--no-private
+--embed-mixins
+--list-undoc
+--line-numbers
+lib/**/*.rb
+-
+CHANGELOG.md
+LICENSE.txt 

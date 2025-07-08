@@ -1,0 +1,110 @@
+plugins:
+  - rubocop-performance
+  - rubocop-rake
+
+require:
+  - rubocop-rspec
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  NewCops: enable
+  TargetRubyVersion: 2.7  # Support from Ruby 2.7+
+  Exclude:
+    - 'vendor/**/*'
+    - 'coverage/**/*'
+    - 'docs/**/*'
+
+# DISABLE BROKEN COPS in RuboCop 1.77.0
+Capybara/RSpec/PredicateMatcher:
+  Enabled: false
+
+# Disable Gemspec cops (we keep deps in gemspec for compatibility)
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+Gemspec/DuplicatedAssignment:
+  Enabled: false
+Gemspec/DevelopmentDependencies:
+  Enabled: false
+Gemspec/RubyVersionGlobalsUsage:
+  Enabled: false
+
+# Limity długości linii
+Layout/LineLength:
+  Max: 120
+  AllowedPatterns: ['^\\s*# ', '^\\s*#+', '^\\s*it .* do$']
+
+# Długość metod
+Metrics/MethodLength:
+  Max: 30
+  CountAsOne: ['array', 'hash', 'heredoc']
+
+# Złożoność metod
+Metrics/AbcSize:
+  Max: 30  # Increase for complex algorithms
+
+# Cyklomatyczna złożoność
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# Długość klasy
+Metrics/ClassLength:
+  Max: 300
+
+# Module length
+Metrics/ModuleLength:
+  Max: 200  # Allow larger modules for readability formulas
+
+# Dokumentacja
+Style/Documentation:
+  Enabled: false
+
+# Frozen string literal
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# Numerowane parametry
+Naming/MethodParameterName:
+  MinNameLength: 1  # Allow single-letter params like 'n'
+
+# Boolean parameters
+Style/OptionalBooleanParameter:
+  Enabled: false  # Allow boolean defaults for gem compatibility
+
+# Trivial accessors
+Style/TrivialAccessors:
+  Enabled: false  # Allow custom setters with logic
+
+# RSpec configuration
+RSpec/ExampleLength:
+  Max: 50  # Allow longer examples for integration tests
+
+RSpec/MultipleExpectations:
+  Max: 20  # Allow more expectations for complex tests
+
+RSpec/LeakyConstantDeclaration:
+  Enabled: false  # Allow constants in specs
+
+RSpec/DescribeClass:
+  Enabled: false  # Allow string descriptions
+
+RSpec/ContextWording:
+  Enabled: false  # Allow flexible context names
+
+RSpec/FilePath:
+  Enabled: false  # Allow textstat_spec.rb naming
+
+RSpec/SpecFilePathFormat:
+  Enabled: false  # Allow textstat_spec.rb naming
+
+RSpec/InstanceVariable:
+  Enabled: false  # Allow @long_test in legacy specs
+
+RSpec/BeEql:
+  Enabled: false  # Allow eql for precise numeric comparisons
+
+# Disable problematic constants-in-block warnings for specs
+Lint/ConstantDefinitionInBlock:
+  Exclude:
+    - 'spec/**/*' 

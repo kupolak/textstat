@@ -1,28 +1,136 @@
-name: Ruby
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "main" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "main" ]
 
 permissions:
   contents: read
 
 jobs:
   test:
-
-    runs-on: ubuntu-latest
+    name: "Ruby ${{ matrix.ruby-version }} on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    
     strategy:
+      fail-fast: false
       matrix:
-        ruby-version: ['3.0', '3.1']
+        ruby-version: ['2.7', '3.0', '3.1', '3.2', '3.3']
+        os: [ubuntu-latest]
+        include:
+          # Test on macOS for the latest Ruby version
+          - ruby-version: '3.3'
+            os: macos-latest
+          # Test on Windows for the latest Ruby version  
+          - ruby-version: '3.3'
+            os: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Ruby ${{ matrix.ruby-version }}
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby-version }}
-        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Run tests
-      run: bundle exec rake
+        bundler-cache: true
+
+    - name: Run linter
+      run: bundle exec rubocop
+      continue-on-error: ${{ matrix.ruby-version == '2.7' }}
+
+    - name: Run tests with coverage
+      run: bundle exec rspec --require spec_helper
+      env:
+        CI: true
+
+    - name: Upload coverage to Codecov
+      if: matrix.ruby-version == '3.3' && matrix.os == 'ubuntu-latest'
+      uses: codecov/codecov-action@v4
+      with:
+        file: ./coverage/lcov/lcov.info
+        flags: unittests
+        name: codecov-umbrella
+
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+
+    - name: Security audit dependencies
+      run: |
+        if bundle exec bundler-audit --version > /dev/null 2>&1; then
+          bundle exec bundler-audit --update
+        else
+          echo "Bundler-audit not available in bundle, skipping dependency security audit"
+        fi
+
+    - name: Security audit code
+      run: |
+        if bundle exec brakeman --version > /dev/null 2>&1; then
+          bundle exec brakeman --quiet --no-pager || true
+        else
+          echo "Brakeman not available in bundle, skipping code security audit"
+        fi
+
+  performance:
+    name: Performance Regression Test
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+
+    - name: Run performance benchmarks
+      run: |
+        bundle exec ruby benchmark_comparison.rb > performance_results.txt
+        cat performance_results.txt
+
+    - name: Upload performance results
+      uses: actions/upload-artifact@v4
+      with:
+        name: performance-results
+        path: performance_results.txt
+        retention-days: 30
+
+  quality:
+    name: Code Quality Analysis
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.3'
+        bundler-cache: true
+
+    - name: Generate documentation
+      run: bundle exec yard doc
+
+    - name: Check documentation coverage
+      run: |
+        echo "Documentation coverage:"
+        bundle exec yard stats --list-undoc
+
+    - name: Run performance tests
+      run: bundle exec rspec spec/performance_spec.rb --format documentation

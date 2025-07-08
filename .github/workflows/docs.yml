@@ -1,0 +1,52 @@
+name: Generate Documentation
+
+on:
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'lib/**/*.rb'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - '.yardopts'
+  pull_request:
+    branches: [ main, master ]
+    paths:
+      - 'lib/**/*.rb'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - '.yardopts'
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.1
+        bundler-cache: true
+    
+    - name: Install dependencies
+      run: bundle install
+    
+    - name: Generate documentation
+      run: bundle exec yard doc
+    
+    - name: Deploy to GitHub Pages
+      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
+        destination_dir: .
+        
+    - name: Upload documentation artifacts
+      if: github.event_name == 'pull_request'
+      uses: actions/upload-artifact@v4
+      with:
+        name: documentation
+        path: docs/
+        retention-days: 5 
