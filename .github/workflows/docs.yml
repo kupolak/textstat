@@ -36,7 +36,7 @@ jobs:
       run: bundle exec yard doc
     
     - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+      if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main') && github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}

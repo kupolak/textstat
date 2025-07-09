@@ -11,8 +11,6 @@
 --protected
 --no-private
 --embed-mixins
---list-undoc
---line-numbers
 lib/**/*.rb
 -
 CHANGELOG.md
