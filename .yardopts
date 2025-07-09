@@ -1,7 +1,6 @@
 --markup-provider=redcarpet
 --markup=markdown
---title="TextStat - Ruby Text Readability Analysis"
---readme=README.md
+--title="TextStat - Ruby Text Readability Analysis API"
 --files=CHANGELOG.md,LICENSE.txt
 --exclude=spec/
 --exclude=benchmark_comparison.rb

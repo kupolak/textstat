@@ -1,4 +1,4 @@
-name: Generate Documentation
+name: Generate API Documentation
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
       - 'README.md'
       - 'CHANGELOG.md'
       - '.yardopts'
+      - '.github/workflows/docs.yml'
   pull_request:
     branches: [ main, master ]
     paths:
@@ -32,8 +33,11 @@ jobs:
     - name: Install dependencies
       run: bundle install
     
-    - name: Generate documentation
+    - name: Generate API documentation
       run: bundle exec yard doc
+    
+    - name: Fix documentation index page
+      run: ruby fix_docs.rb
     
     - name: Deploy to GitHub Pages
       if: (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main') && github.event_name == 'push'
@@ -47,6 +51,6 @@ jobs:
       if: github.event_name == 'pull_request'
       uses: actions/upload-artifact@v4
       with:
-        name: documentation
+        name: api-documentation
         path: docs/
         retention-days: 5 
