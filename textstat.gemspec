@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['lib/**/*.rb', 'lib/dictionaries/*.txt']
 
   # Runtime dependencies - required for gem functionality
-  spec.add_dependency 'text-hyphen', '~> 1.4.1'
+  spec.add_dependency 'text-hyphen', '>= 1.4.1', '< 1.6.0'
 
   # Development dependencies - required for development and building
   spec.add_development_dependency 'bundler', '>= 2.0'
