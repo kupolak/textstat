@@ -77,9 +77,9 @@ Gem::Specification.new do |spec|
 
   # Brakeman only for Ruby 3.0+
   if RUBY_VERSION >= '3.0.0'
-    spec.add_development_dependency 'brakeman', '~> 6.2'
+    spec.add_development_dependency 'brakeman', '~> 7.0'
   else
     # Fallback for Ruby 2.7
-    spec.add_development_dependency 'brakeman', '~> 5.4'
+    spec.add_development_dependency 'brakeman', '~> 7.0'
   end
 end
