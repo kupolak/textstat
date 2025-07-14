@@ -52,13 +52,13 @@ Gem::Specification.new do |spec|
     spec.add_development_dependency 'rubocop', '~> 1.69'
     spec.add_development_dependency 'rubocop-performance', '~> 1.23'
     spec.add_development_dependency 'rubocop-rake', '~> 0.6'
-    spec.add_development_dependency 'rubocop-rspec', '~> 2.31'
+    spec.add_development_dependency 'rubocop-rspec', '~> 3.6'
   else
     # Fallback for Ruby 2.7
     spec.add_development_dependency 'rubocop', '~> 1.57'
     spec.add_development_dependency 'rubocop-performance', '~> 1.19'
     spec.add_development_dependency 'rubocop-rake', '~> 0.6'
-    spec.add_development_dependency 'rubocop-rspec', '~> 2.20'
+    spec.add_development_dependency 'rubocop-rspec', '~> 3.6'
   end
   spec.add_development_dependency 'rubocop-thread_safety', '~> 0.6'
 
