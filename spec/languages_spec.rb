@@ -25,7 +25,8 @@ describe 'TextStat Multi-Language Support' do
     'pl' => 'Polish',
     'pt' => 'Portuguese',
     'ru' => 'Russian',
-    'sv' => 'Swedish'
+    'sv' => 'Swedish',
+    'eu' => 'Basque'
   }.freeze
 
   # Test text samples in different languages
@@ -41,7 +42,8 @@ describe 'TextStat Multi-Language Support' do
     'nl' => 'De snelle bruine vos springt over de luie hond. Dit is een eenvoudige testzin.',
     'sv' => 'Den snabba bruna räven hoppar över den lata hunden. Detta är en enkel testmening.',
     'cs' => 'Rychlá hnědá liška skáče přes líného psa. Toto je jednoduchá testovací věta.',
-    'da' => 'Den hurtige brune ræv springer over den dovne hund. Dette er en simpel testsætning.'
+    'da' => 'Den hurtige brune ræv springer over den dovne hund. Dette er en simpel testsætning.',
+    'eu' => 'Azeri azkar marroiak txakur alferra gainetik egiten du jauzi. Hau proba esaldi sinple bat da.'
   }.freeze
 
   let(:default_text) { TEST_TEXTS['en_us'] }
@@ -170,7 +172,8 @@ describe 'TextStat Multi-Language Support' do
         'es' => %w[el la y es],
         'fr' => %w[le la et est],
         'de' => %w[der die und ist],
-        'it' => %w[il la e è]
+        'it' => %w[il la e è],
+        'eu' => %w[eta da ez bai]
       }
 
       common_test_cases.each do |lang, words|
