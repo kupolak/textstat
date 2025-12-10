@@ -12,7 +12,6 @@ SimpleCov.start do
   # Coverage tracking configuration
   add_filter '/spec/'          # Exclude test files
   add_filter '/vendor/'        # Exclude vendor dependencies
-  add_filter 'lib/counter.rb'  # Exclude counter utility
   add_filter 'lib/textstat/version.rb' # Exclude version file (constants only)
 
   # Group coverage by modules for better reporting

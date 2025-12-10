@@ -1,4 +1,4 @@
-# TextStat 1.0.0 🚀
+# TextStat 1.0.1 🚀
 
 [![Gem Version](https://badge.fury.io/rb/textstat.svg)](https://badge.fury.io/rb/textstat)
 [![Documentation](https://img.shields.io/badge/docs-yard-blue.svg)](https://kupolak.github.io/textstat)
@@ -324,7 +324,7 @@ This project is licensed under the MIT License - see the [LICENSE.txt](LICENSE.t
 
 ## 📊 Project Stats
 
-- **Version**: 1.0.0 (First Stable Release)
+- **Version**: 1.0.1
 - **Ruby Support**: 2.7+ 
 - **Languages**: 22 supported
 - **Tests**: 199 total, 87.4% passing

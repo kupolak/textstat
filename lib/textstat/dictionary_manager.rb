@@ -45,7 +45,8 @@ module TextStat
       #
       # Loads a language-specific dictionary from disk and caches it in memory
       # for subsequent calls. This provides significant performance improvements
-      # for repeated operations.
+      # for repeated operations. Uses optimized file reading with streaming for
+      # better performance and memory efficiency.
       #
       # @param language [String] language code (e.g., 'en_us', 'es', 'fr')
       # @return [Set] set of easy words for the specified language
@@ -63,8 +64,9 @@ module TextStat
         easy_words = Set.new
 
         if File.exist?(dictionary_file)
-          File.read(dictionary_file).each_line do |line|
-            easy_words << line.chomp
+          # Use foreach for streaming - efficient and memory-friendly for large files
+          File.foreach(dictionary_file, chomp: true) do |line|
+            easy_words << line
           end
         end
 
@@ -123,7 +125,7 @@ module TextStat
     # 1. Not being in the language's easy words dictionary
     # 2. Having more than one syllable
     #
-    # This method uses the cached dictionary system for optimal performance.
+    # This method uses the cached dictionary and hyphenator systems for optimal performance.
     #
     # @param text [String] the text to analyze
     # @param language [String] language code for dictionary selection
@@ -142,12 +144,22 @@ module TextStat
     def difficult_words(text, language = 'en_us', return_words = false)
       easy_words = DictionaryManager.load_dictionary(language)
 
+      # Clean and split text once
       text_list = text.downcase.gsub(/[^0-9a-z ]/i, '').split
-      diff_words_set = Set.new
-      text_list.each do |value|
-        next if easy_words.include? value
+      return return_words ? Set.new : 0 if text_list.empty?
 
-        diff_words_set.add(value) if syllable_count(value, language) > 1
+      # Get cached hyphenator for syllable counting
+      hyphenator = BasicStats.get_hyphenator(language)
+      diff_words_set = Set.new
+
+      # Process each word once
+      text_list.each do |word|
+        next if easy_words.include?(word)
+
+        # Count syllables inline using cached hyphenator
+        word_hyphenated = hyphenator.visualise(word)
+        syllables = word_hyphenated.count('-') + 1
+        diff_words_set.add(word) if syllables > 1
       end
 
       return_words ? diff_words_set : diff_words_set.length

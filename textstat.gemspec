@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['lib/**/*.rb', 'lib/dictionaries/*.txt']
 
   # Runtime dependencies - required for gem functionality
-  spec.add_dependency 'text-hyphen', '~> 1.4.1'
+  spec.add_dependency 'text-hyphen', '~> 1.5.0'
 
   # Development dependencies - required for development and building
   spec.add_development_dependency 'bundler', '>= 2.0'
@@ -52,7 +52,7 @@ Gem::Specification.new do |spec|
     spec.add_development_dependency 'rubocop', '~> 1.69'
     spec.add_development_dependency 'rubocop-performance', '~> 1.23'
     spec.add_development_dependency 'rubocop-rake', '~> 0.6'
-    spec.add_development_dependency 'rubocop-rspec', '~> 2.31'
+    spec.add_development_dependency 'rubocop-rspec', '~> 3.8'
   else
     # Fallback for Ruby 2.7
     spec.add_development_dependency 'rubocop', '~> 1.57'
@@ -75,8 +75,10 @@ Gem::Specification.new do |spec|
   # Security auditing
   spec.add_development_dependency 'bundler-audit', '~> 0.9'
 
-  # Brakeman only for Ruby 3.0+
-  if RUBY_VERSION >= '3.0.0'
+  # Brakeman - version specific for Ruby compatibility
+  if RUBY_VERSION >= '3.1.0'
+    spec.add_development_dependency 'brakeman', '~> 7.1'
+  elsif RUBY_VERSION >= '3.0.0'
     spec.add_development_dependency 'brakeman', '~> 6.2'
   else
     # Fallback for Ruby 2.7
