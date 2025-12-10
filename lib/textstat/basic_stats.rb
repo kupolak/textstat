@@ -16,7 +16,7 @@ module TextStat
   module BasicStats
     # Frozen regex constants to avoid recompilation overhead
     NON_ALPHA_REGEX = /[^a-zA-Z\s]/.freeze
-    SENTENCE_BOUNDARY_REGEX = /[\.\?!][\'\\)\]]*[ |\n][A-Z]/.freeze
+    SENTENCE_BOUNDARY_REGEX = /[.?!]['\\)\]]*[ |\n][A-Z]/.freeze
 
     # Cache for Text::Hyphen instances to avoid recreating them for each call
     @hyphenator_cache = {}
@@ -85,7 +85,7 @@ module TextStat
       return 0 if text.empty?
 
       text = text.downcase
-      text.gsub(NON_ALPHA_REGEX, '').squeeze(' ')  # Note: not assigned back (matches original behavior)
+      text.gsub(NON_ALPHA_REGEX, '').squeeze(' ') # NOTE: not assigned back (matches original behavior)
       hyphenator = BasicStats.get_hyphenator(language)
       count = 0
       text.split.each do |word|
@@ -186,6 +186,7 @@ module TextStat
       count = 0
       words.each do |word|
         next if word.empty?
+
         word_hyphenated = hyphenator.visualise(word)
         syllables = word_hyphenated.count('-') + 1
         count += 1 if syllables >= 3
