@@ -64,6 +64,42 @@
 <p>The format is based on <a href="https://keepachangelog.com/en/1.0.0/">Keep a Changelog</a>,
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 
+<h2 id="1-0-1-2025-12-10">[1.0.1] - 2025-12-10</h2>
+
+<h3 id="performance-improvements">🚀 Performance Improvements</h3>
+
+<ul>
+<li><strong>OPTIMIZATION</strong>: Implemented lazy loading for hyphenators with memoization, reducing unnecessary object creation</li>
+<li><strong>OPTIMIZATION</strong>: Improved <code>text_standard</code> method performance by caching intermediate results</li>
+<li><strong>OPTIMIZATION</strong>: Reduced memory allocations by using <code>File.foreach</code> instead of <code>File.readlines</code></li>
+<li><strong>OPTIMIZATION</strong>: Better memory efficiency in dictionary loading operations</li>
+</ul>
+
+<h3 id="code-quality">🔧 Code Quality</h3>
+
+<ul>
+<li><strong>IMPROVEMENT</strong>: Fixed Rubocop offenses for better code quality</li>
+<li><strong>IMPROVEMENT</strong>: Enhanced code documentation and comments</li>
+<li><strong>IMPROVEMENT</strong>: Improved separation of concerns in performance-critical sections</li>
+</ul>
+
+<h3 id="documentation">📝 Documentation</h3>
+
+<ul>
+<li><strong>MAINTENANCE</strong>: Updated code comments for clarity</li>
+<li><strong>MAINTENANCE</strong>: Improved inline documentation</li>
+</ul>
+
+<h3 id="dependencies">📦 Dependencies</h3>
+
+<ul>
+<li><strong>UPDATE</strong>: text-hyphen 1.4.1 → 1.5.0 (runtime dependency)</li>
+<li><strong>UPDATE</strong>: rubocop-rspec 2.31 → 3.8 (development dependency)</li>
+<li><strong>UPDATE</strong>: brakeman 6.2 → 7.1 for Ruby 3.1+ (development dependency)</li>
+<li><strong>FIX</strong>: Updated .rubocop.yml configuration for rubocop-rspec 3.8 compatibility</li>
+<li><strong>FIX</strong>: Improved brakeman version constraints for Ruby 2.7/3.0/3.1+ compatibility</li>
+</ul>
+
 <h2 id="1-0-0-2025-01-08">[1.0.0] - 2025-01-08 🎉</h2>
 
 <h3 id="major-performance-improvements">🚀 Major Performance Improvements</h3>
@@ -459,9 +495,9 @@ require &#39;textstat/readability_formulas&#39;
 </div></div>
 
       <div id="footer">
-  Generated on Wed Jul  9 19:01:50 2025 by
+  Generated on Wed Dec 10 21:40:58 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.1.7).
+  0.9.38 (ruby-3.1.7).
 </div>
 
     </div>

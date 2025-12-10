@@ -207,6 +207,36 @@ TextStat.flesch_reading_ease(\&quot;Sample text\&quot;)        # =&gt; 83.32</co
 </li>
 
     
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#hyphenator_cache-class_method" title="hyphenator_cache (class method)">.<strong>hyphenator_cache</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+    <span class="note title not_defined_here">
+      extended
+      from <span class='object_link'><a href="BasicStats.html#hyphenator_cache-class_method" title="TextStat::BasicStats.hyphenator_cache (method)">BasicStats</a></span>
+    </span>
+  
+  
+  
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+    
   </ul>
 
 
@@ -567,7 +597,7 @@ TextStat.flesch_reading_ease(\&quot;Sample text\&quot;)        # =&gt; 83.32</co
   
 
   
-    <span class="summary_desc"><div class='inline'><p>Calculate consensus grade from all collected grades.</p>
+    <span class="summary_desc"><div class='inline'><p>Calculate consensus grade from all collected grades Uses Ruby&#39;s built-in tally method for better performance Note: Requires Ruby 2.7+, which matches the gem&#39;s minimum requirement.</p>
 </div></span>
   
 </li>
@@ -1132,6 +1162,49 @@ TextStat.flesch_reading_ease(\&quot;Sample text\&quot;)        # =&gt; 83.32</co
     <span class="not_defined_here">
       Originally defined in module
         <span class='object_link'><a href="DictionaryManager.html#dictionary_cache-class_method" title="TextStat::DictionaryManager.dictionary_cache (method)">DictionaryManager</a></span>
+    </span>
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Since:</p>
+<ul class="since">
+  
+    <li>
+      
+      
+      
+      
+        
+        <div class='inline'><p>1.0.0</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+</div>
+    
+      
+      <span id="hyphenator_cache=-class_method"></span>
+      <div class="method_details ">
+  <h3 class="signature " id="hyphenator_cache-class_method">
+  
+    .<strong>hyphenator_cache</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+    <span class="not_defined_here">
+      Originally defined in module
+        <span class='object_link'><a href="BasicStats.html#hyphenator_cache-class_method" title="TextStat::BasicStats.hyphenator_cache (method)">BasicStats</a></span>
     </span>
   
 </h3><div class="docstring">
@@ -2124,7 +2197,9 @@ It&#39;s designed to be easily calculated by computer programs.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Calculate consensus grade from all collected grades</p>
+    <p>Calculate consensus grade from all collected grades
+Uses Ruby&#39;s built-in tally method for better performance
+Note: Requires Ruby 2.7+, which matches the gem&#39;s minimum requirement</p>
 
 
   </div>
@@ -2475,7 +2550,7 @@ It&#39;s particularly effective for elementary and middle school texts.</p>
 <li>Having more than one syllable</li>
 </ol>
 
-<p>This method uses the cached dictionary system for optimal performance.</p>
+<p>This method uses the cached dictionary and hyphenator systems for optimal performance.</p>
 
 
   </div>
@@ -3393,6 +3468,8 @@ for multiple languages. It uses sentence length and percentage of long words.</p
   <div class="discussion">
     <p>Count polysyllabic words (3+ syllables)</p>
 
+<p>Optimized to count syllables for all words in one pass using a cached hyphenator.</p>
+
 
   </div>
 </div>
@@ -3907,7 +3984,7 @@ and educational materials.</p>
 
 <p>Uses the text-hyphen library for accurate syllable counting across
 different languages. Supports 22 languages including English, Spanish,
-French, German, and more.</p>
+French, German, and more. Hyphenator instances are cached for performance.</p>
 
 
   </div>
@@ -4116,9 +4193,9 @@ a single formula alone.</p>
 </div>
 
       <div id="footer">
-  Generated on Wed Jul  9 19:01:51 2025 by
+  Generated on Wed Dec 10 21:40:58 2025 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.37 (ruby-3.1.7).
+  0.9.38 (ruby-3.1.7).
 </div>
 
     </div>
