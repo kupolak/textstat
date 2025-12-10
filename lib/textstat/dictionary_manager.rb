@@ -45,7 +45,8 @@ module TextStat
       #
       # Loads a language-specific dictionary from disk and caches it in memory
       # for subsequent calls. This provides significant performance improvements
-      # for repeated operations. Uses optimized file reading for better performance.
+      # for repeated operations. Uses optimized file reading with streaming for
+      # better performance and memory efficiency.
       #
       # @param language [String] language code (e.g., 'en_us', 'es', 'fr')
       # @return [Set] set of easy words for the specified language
@@ -63,8 +64,8 @@ module TextStat
         easy_words = Set.new
 
         if File.exist?(dictionary_file)
-          # Use readlines for bulk reading - more efficient than read + each_line
-          File.readlines(dictionary_file, chomp: true).each do |line|
+          # Use foreach for streaming - efficient and memory-friendly for large files
+          File.foreach(dictionary_file, chomp: true) do |line|
             easy_words << line
           end
         end

@@ -344,9 +344,10 @@ module TextStat
     end
 
     # Calculate consensus grade from all collected grades
-    # Uses Ruby's built-in tally method for better performance (Ruby 2.7+)
+    # Uses Ruby's built-in tally method for better performance
+    # Note: Requires Ruby 2.7+, which matches the gem's minimum requirement
     def calculate_consensus_grade(grade)
-      # Use tally to count occurrences - more efficient than Counter
+      # Use tally to count occurrences - more efficient than Counter class
       tallied = grade.tally
       # Find the grade with maximum count
       tallied.max_by { |_grade, count| count }[0]
