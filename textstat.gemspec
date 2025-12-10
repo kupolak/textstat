@@ -75,9 +75,11 @@ Gem::Specification.new do |spec|
   # Security auditing
   spec.add_development_dependency 'bundler-audit', '~> 0.9'
 
-  # Brakeman only for Ruby 3.0+
-  if RUBY_VERSION >= '3.0.0'
+  # Brakeman - version specific for Ruby compatibility
+  if RUBY_VERSION >= '3.1.0'
     spec.add_development_dependency 'brakeman', '~> 7.1'
+  elsif RUBY_VERSION >= '3.0.0'
+    spec.add_development_dependency 'brakeman', '~> 6.2'
   else
     # Fallback for Ruby 2.7
     spec.add_development_dependency 'brakeman', '~> 5.4'

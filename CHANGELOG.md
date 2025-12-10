@@ -25,8 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 📦 Dependencies
 - **UPDATE**: text-hyphen 1.4.1 → 1.5.0 (runtime dependency)
 - **UPDATE**: rubocop-rspec 2.31 → 3.8 (development dependency)
-- **UPDATE**: brakeman 6.2 → 7.1 (development dependency)
+- **UPDATE**: brakeman 6.2 → 7.1 for Ruby 3.1+ (development dependency)
 - **FIX**: Updated .rubocop.yml configuration for rubocop-rspec 3.8 compatibility
+- **FIX**: Improved brakeman version constraints for Ruby 2.7/3.0/3.1+ compatibility
 
 ## [1.0.0] - 2025-01-08 🎉
 
