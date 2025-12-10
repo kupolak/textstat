@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2025-12-10
+
+### 🚀 Performance Improvements
+- **OPTIMIZATION**: Implemented lazy loading for hyphenators with memoization, reducing unnecessary object creation
+- **OPTIMIZATION**: Improved `text_standard` method performance by caching intermediate results
+- **OPTIMIZATION**: Reduced memory allocations by using `File.foreach` instead of `File.readlines`
+- **OPTIMIZATION**: Better memory efficiency in dictionary loading operations
+
+### 🔧 Code Quality
+- **IMPROVEMENT**: Fixed Rubocop offenses for better code quality
+- **IMPROVEMENT**: Enhanced code documentation and comments
+- **IMPROVEMENT**: Improved separation of concerns in performance-critical sections
+
+### 📝 Documentation
+- **MAINTENANCE**: Updated code comments for clarity
+- **MAINTENANCE**: Improved inline documentation
+
+### 📦 Dependencies
+- **UPDATE**: text-hyphen 1.4.1 → 1.5.0 (runtime dependency)
+- **UPDATE**: rubocop-rspec 2.31 → 3.8 (development dependency)
+- **UPDATE**: brakeman 6.2 → 7.1 (development dependency)
+- **FIX**: Updated .rubocop.yml configuration for rubocop-rspec 3.8 compatibility
+
 ## [1.0.0] - 2025-01-08 🎉
 
 ### 🚀 Major Performance Improvements

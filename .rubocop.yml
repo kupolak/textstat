@@ -1,8 +1,6 @@
 plugins:
   - rubocop-performance
   - rubocop-rake
-
-require:
   - rubocop-rspec
 
 AllCops:
@@ -15,10 +13,6 @@ AllCops:
     - 'vendor/**/*'
     - 'coverage/**/*'
     - 'docs/**/*'
-
-# DISABLE BROKEN COPS in RuboCop 1.77.0
-Capybara/RSpec/PredicateMatcher:
-  Enabled: false
 
 # Disable Gemspec cops (we keep deps in gemspec for compatibility)
 Gemspec/RequiredRubyVersion:
@@ -92,10 +86,10 @@ RSpec/DescribeClass:
 RSpec/ContextWording:
   Enabled: false  # Allow flexible context names
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   Enabled: false  # Allow textstat_spec.rb naming
 
-RSpec/SpecFilePathFormat:
+RSpec/SpecFilePathSuffix:
   Enabled: false  # Allow textstat_spec.rb naming
 
 RSpec/InstanceVariable:
