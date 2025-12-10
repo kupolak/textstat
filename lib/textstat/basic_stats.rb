@@ -14,6 +14,33 @@ module TextStat
   #   TextStat.syllable_count(text)      # => 6
   #   TextStat.sentence_count(text)      # => 2
   module BasicStats
+    # Frozen regex constants to avoid recompilation overhead
+    NON_ALPHA_REGEX = /[^a-zA-Z\s]/.freeze
+    SENTENCE_BOUNDARY_REGEX = /[\.\?!][\'\\)\]]*[ |\n][A-Z]/.freeze
+
+    # Cache for Text::Hyphen instances to avoid recreating them for each call
+    @hyphenator_cache = {}
+
+    class << self
+      attr_accessor :hyphenator_cache
+
+      # Get or create a cached Text::Hyphen instance for the specified language
+      #
+      # @param language [String] language code
+      # @return [Text::Hyphen] cached hyphenator instance
+      # @private
+      def get_hyphenator(language)
+        @hyphenator_cache[language] ||= Text::Hyphen.new(language: language, left: 0, right: 0)
+      end
+
+      # Clear all cached hyphenators
+      #
+      # @return [Hash] empty cache
+      # @private
+      def clear_hyphenator_cache
+        @hyphenator_cache.clear
+      end
+    end
     # Count characters in text
     #
     # @param text [String] the text to analyze
@@ -36,7 +63,7 @@ module TextStat
     #   TextStat.lexicon_count("Hello, world!")       # => 2
     #   TextStat.lexicon_count("Hello, world!", false) # => 2
     def lexicon_count(text, remove_punctuation = true)
-      text = text.gsub(/[^a-zA-Z\s]/, '').squeeze(' ') if remove_punctuation
+      text = text.gsub(NON_ALPHA_REGEX, '').squeeze(' ') if remove_punctuation
       text.split.count
     end
 
@@ -44,7 +71,7 @@ module TextStat
     #
     # Uses the text-hyphen library for accurate syllable counting across
     # different languages. Supports 22 languages including English, Spanish,
-    # French, German, and more.
+    # French, German, and more. Hyphenator instances are cached for performance.
     #
     # @param text [String] the text to analyze
     # @param language [String] language code for hyphenation dictionary
@@ -58,11 +85,11 @@ module TextStat
       return 0 if text.empty?
 
       text = text.downcase
-      text.gsub(/[^a-zA-Z\s]/, '').squeeze(' ')
-      dictionary = Text::Hyphen.new(language: language, left: 0, right: 0)
+      text.gsub(NON_ALPHA_REGEX, '').squeeze(' ')  # Note: not assigned back (matches original behavior)
+      hyphenator = BasicStats.get_hyphenator(language)
       count = 0
       text.split.each do |word|
-        word_hyphenated = dictionary.visualise(word)
+        word_hyphenated = hyphenator.visualise(word)
         count += word_hyphenated.count('-') + 1
       end
       count
@@ -79,7 +106,7 @@ module TextStat
     #   TextStat.sentence_count("Hello world! How are you?")  # => 2
     #   TextStat.sentence_count("Dr. Smith went to the U.S.A.") # => 1
     def sentence_count(text)
-      text.scan(/[\.\?!][\'\\)\]]*[ |\n][A-Z]/).map(&:strip).count + 1
+      text.scan(SENTENCE_BOUNDARY_REGEX).map(&:strip).count + 1
     end
 
     # Calculate average sentence length
@@ -139,16 +166,29 @@ module TextStat
 
     # Count polysyllabic words (3+ syllables)
     #
+    # Optimized to count syllables for all words in one pass using a cached hyphenator.
+    #
     # @param text [String] the text to analyze
     # @param language [String] language code for hyphenation dictionary
     # @return [Integer] number of polysyllabic words
     # @example
     #   TextStat.polysyllab_count("beautiful complicated")  # => 2
     def polysyllab_count(text, language = 'en_us')
+      return 0 if text.empty?
+
+      # Clean and split text once
+      cleaned_text = text.downcase.gsub(NON_ALPHA_REGEX, '').squeeze(' ')
+      words = cleaned_text.split
+      return 0 if words.empty?
+
+      # Use cached hyphenator for better performance
+      hyphenator = BasicStats.get_hyphenator(language)
       count = 0
-      text.split.each do |word|
-        w = syllable_count(word, language)
-        count += 1 if w >= 3
+      words.each do |word|
+        next if word.empty?
+        word_hyphenated = hyphenator.visualise(word)
+        syllables = word_hyphenated.count('-') + 1
+        count += 1 if syllables >= 3
       end
       count
     end
